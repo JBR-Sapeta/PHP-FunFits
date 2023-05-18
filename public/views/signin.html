@@ -16,6 +16,7 @@
   <link rel="stylesheet" type="text/css" href="../css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="../css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="../css/layout/footer.css" />
+  <link rel="stylesheet" type="text/css" href="../css/singin.css" />
   <script
     src="https://kit.fontawesome.com/46d253cbeb.js"
     crossorigin="anonymous"
@@ -95,7 +96,46 @@
         </div>
       </nav>
     </div>
-    <div class="main__page"></div>
+
+    <div class="main__page">
+      <section class="auth-form auth-form--signin">
+        <div class="auth-form__container auth-form__container--signin">
+          <div class="auth-header__block">
+            <h2 class="auth-header__header">WaveUp</h2>
+            <hr class="auth-header__hr" />
+            <p class="auth-header__slogan">Login in to Your Account</p>
+          </div>
+
+          <form class="auth-form__form auth-form__form--center">
+            <div class="base-input__container">
+              <div class="base-input__field">
+                <i class="fa-solid fa-envelope base-input__icon"></i>
+                <input
+                  class="base-input__input"
+                  type="text"
+                  placeholder="E-mail"
+                />
+              </div>
+            </div>
+
+            <div class="base-input__container">
+              <div class="base-input__field">
+                <i class="fa-solid fa-lock base-input__icon"></i>
+                <input
+                  class="base-input__input"
+                  type="password"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+
+            <div class="auth-form__actions auth-form__actions--100">
+              <button class="auth-form__button" type="submit">Sign In</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
@@ -115,8 +155,8 @@
       <hr class="footer__hr" />
       <div class="footer__media">
         <ul class="footer__list">
-          <li class="footer__li ">
-            <a 
+          <li class="footer__li">
+            <a
               target="_blank"
               rel="noreferrer"
               href="https://www.facebook.com"
@@ -126,7 +166,7 @@
               Facebook
             </a>
           </li>
-          <li class="footer__li ">
+          <li class="footer__li">
             <a
               target="_blank"
               rel="noreferrer"
@@ -137,7 +177,7 @@
               Instagram
             </a>
           </li>
-          <li class="footer__li ">
+          <li class="footer__li">
             <a
               target="_blank"
               rel="noreferrer"
@@ -148,7 +188,7 @@
               Twitter
             </a>
           </li>
-          <li class="footer__li ">
+          <li class="footer__li">
             <a
               target="_blank"
               rel="noreferrer"
