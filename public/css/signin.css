@@ -1,5 +1,5 @@
 .auth-form--signin {
-  background-image: url('../img/singin.jpg');
+  background-image: url('../img/auth//singin.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -103,14 +103,25 @@
 }
 
 .auth-form__actions {
-  margin-top: var(--space-100);
+  margin-top: var(--space-40);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.auth-form__messages {
+  margin-top: var(--space-30);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.auth-form__messages > p {
+  font-size: var(--font-size-14);
+  color: var(--color-red-light);
+}
 
 .auth-form__button {
   padding: 2px var(--space-25);
@@ -142,8 +153,6 @@
 .auth-form__button:active {
   transform: translateY(1px);
 }
-
-
 
 /*  ------------------ INPUT -------------------- */
 

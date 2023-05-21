@@ -83,7 +83,7 @@
             <li class="menu__button">
               <a class="menu__link" href="">
                 <i class="fa-solid fa-circle-play"></i>
-                Competitions</a
+                Compet</a
               >
             </li>
             <li class="menu__button">

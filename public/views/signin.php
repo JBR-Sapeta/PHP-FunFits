@@ -83,7 +83,7 @@
             <li class="menu__button">
               <a class="menu__link" href="">
                 <i class="fa-solid fa-circle-play"></i>
-                Competitions</a
+                Compet</a
               >
             </li>
             <li class="menu__button">
@@ -106,11 +106,12 @@
             <p class="auth-header__slogan">Login in to Your Account</p>
           </div>
 
-          <form class="auth-form__form auth-form__form--center">
+          <form class="auth-form__form auth-form__form--center" action="login" method="POST">
             <div class="base-input__container">
               <div class="base-input__field">
                 <i class="fa-solid fa-envelope base-input__icon"></i>
                 <input
+                  name="email"
                   class="base-input__input"
                   type="text"
                   placeholder="E-mail"
@@ -122,6 +123,7 @@
               <div class="base-input__field">
                 <i class="fa-solid fa-lock base-input__icon"></i>
                 <input
+                  name="password"
                   class="base-input__input"
                   type="password"
                   placeholder="Password"
@@ -129,7 +131,18 @@
               </div>
             </div>
 
-            <div class="auth-form__actions auth-form__actions--100">
+            <div class="auth-form__messages">
+              <p>
+              <?php if(isset($messages)){
+                foreach($messages as $message){
+                  echo $message;
+                }
+              }
+              ?>
+              </p>
+            </div>
+
+            <div class="auth-form__actions ">
               <button class="auth-form__button" type="submit">Sign In</button>
             </div>
           </form>

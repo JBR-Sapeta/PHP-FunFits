@@ -5,7 +5,11 @@ require_once 'Routing.php';
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
-Routing::get('index','DefaultController');
+Routing::get('','DefaultController');
+Routing::get('newteam','DefaultController');
 Routing::get('signin','DefaultController');
 Routing::get('signup','DefaultController');
+Routing::post('login','AuthController');
+Routing::post('register','AuthtController');
+
 Routing::run($path);
