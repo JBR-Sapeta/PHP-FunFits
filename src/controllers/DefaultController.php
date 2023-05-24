@@ -19,9 +19,5 @@ class DefaultController extends AppController {
         $this->render("signup");
     }
 
-    public function newteam(){
-        //TODO display signup.html
-        $this->render("newteam");
-    }
     
 }

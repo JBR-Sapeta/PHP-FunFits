@@ -98,8 +98,84 @@
     </div>
 
     <div class="main__page">
-      <section class="auth-form auth-form--signin">
-        XD
+      <section class="newteam">
+        <form class="newteam__form" action="addTeam" method="POST" ENCTYPE="multipart/form-data">
+
+            <h2 class="newteam__header">Create New Team</h2>
+          
+            <div class="base-input__container">
+                <i class="fa-sharp fa-solid fa-people-group base-input__icon"></i>
+                <input
+                  name="title"
+                  class="base-input__input"
+                  type="text"
+                  placeholder="Team name"
+                />
+            </div>
+
+            <div class="base-input__container">
+                <i class="fa-sharp fa-solid fa-city base-input__icon"></i>
+                <input
+                  name="city"
+                  class="base-input__input"
+                  type="text"
+                  placeholder="City"
+                />
+            </div>
+
+            <div class="base-textarea__container">
+              <label for="description">
+                <i class="fa-solid fa-pen base-textarea__icon"></i>
+                 Description
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                class="base-textarea__input"
+                type="text"
+                placeholder="Team description..."
+                rows="8"
+                maxlength="400"
+              > </textarea>
+            </div>
+
+            <div class="base-select__container">
+               <label for="game">
+               <i class="fa-solid fa-basketball base-select__icon"></i>
+               Choose a game:
+              </label>
+              <select name="game" id="game" class="base-select__input">
+                <option value="Football">Football</option>
+                <option value="Voleyball">Voleyball</option>
+                <option value="Basketball">Basketball</option>
+                <option value="Tenis">Tenis</option>
+              </select> 
+            </div>
+
+            <div class="base-file__container">
+              <label> 
+                <i class="fa-regular fa-image base-file__icon "></i>
+                Image
+              </label>
+              <input type="file" name="file" class="base-file__input" /><br/>
+            </div>
+
+            
+
+            <div class="newteam__actions">
+              <div class="newteam__messages">
+                <p>
+                <?php if(isset($messages)){
+                  foreach($messages as $message){
+                    echo $message;
+                  }
+                }
+                ?>
+                </p>
+              </div>
+              <button class="newteam__button" type="submit">Create</button>
+            </div>
+        </form>
       </section>
     </div>
   </main>
