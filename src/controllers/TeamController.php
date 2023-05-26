@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Team.php';
+require_once __DIR__.'/../repository/TeamRepository.php';
 
 
 class TeamController extends AppController{
@@ -10,7 +11,16 @@ class TeamController extends AppController{
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
-    private $messages = [];
+    private $messages = []; 
+    private $teamRepository;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->teamRepository = new TeamRepository();
+    }
+
+
 
     public function addTeam(){
         
@@ -22,11 +32,12 @@ class TeamController extends AppController{
 
             
             $team = new Team($_POST['title'],$_POST['city'], $_POST['description'],$_POST['game'], $_FILES['file']['name']);
+            $this->teamRepository->addTeam($team);
 
             return $this->render("teams",  ['messages' => $this->message,'team' => $team]);
         }
 
-        $this->render("add-team",  ['messages' => $this->message]);
+        return $this->render("add-team",  ['messages' => $this->message]);
     }
 
     private function validate(array $file): bool
