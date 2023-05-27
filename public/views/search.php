@@ -16,7 +16,7 @@
   <link rel="stylesheet" type="text/css" href="public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/newteam.css" />
+  <link rel="stylesheet" type="text/css" href="public/css/search.css" />
   <script
     src="https://kit.fontawesome.com/46d253cbeb.js"
     crossorigin="anonymous"
@@ -98,8 +98,68 @@
     </div>
 
     <div class="main__page">
-      <section class="auth-form auth-form--signin">
-        XD
+      <section class="search">
+      
+      <div class="search__field">
+        <input class="search__input" type="text" placeholder="Serach by team name" name="search"/>
+        <div class="search__action">
+          <button class="search__button" type="button">
+            <i class="fa-sharp fa-solid fa-magnifying-glass search__icon-20"></i>
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div class="search__params">
+        <div class="search__city">
+          <label for="city" class="search__label">
+            <i class="fa-sharp fa-solid fa-city search__icon-16"></i>  
+            City
+          </label>
+          <input id="city" type="text" placeholder="City" name="city" />
+        </div>
+        <div class="search__game">
+          <label for="game" class="search__label">
+            <i class="fa-solid fa-basketball base-select__icon search__icon-16"></i>
+            Category:
+          </label>
+          <select name="game" id="game" class="search__select">
+            <option value="Football">Football</option>
+            <option value="Voleyball">Voleyball</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Tenis">Tenis</option>
+          </select> 
+        </div>
+      </div>
+
+
+      <div class="search-results">
+
+        <article class="search-result">
+          <picture class="search-result__picture">
+            <img class="search-result__img" src="public/uploads/leah-hetteberg-IoJFOvbqF3c-unsplash.jpg" alt="Team" >
+          </picture>
+          <h3 class="search-result__headre">Lorem Ipsum Team</h3>
+          <div class="search-result__team-info">
+            <p class="search-result__info">
+              <i class="fa-solid fa-basketball base-select__icon search-result__icon"></i>
+              Footblal
+            </p>
+            <p class="search-result__info">
+              <i class="fa-solid fa-users search-result__icon"></i>
+              15
+            </p>
+            <p class="search-result__info">
+              <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  
+              Cracow
+          </div>
+          <div class="search-result__actions">
+            <button class="search-result__button" >More</button>
+          </div>
+        </article>
+
+      </div>
+
       </section>
     </div>
   </main>

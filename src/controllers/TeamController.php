@@ -40,6 +40,19 @@ class TeamController extends AppController{
         return $this->render("add-team",  ['messages' => $this->message]);
     }
 
+
+    public function teams(){
+
+        $this->render("teams");
+    }
+
+
+    public function search(){
+
+        $this->render("search");
+    }
+
+
     private function validate(array $file): bool
     {
         if ($file['size'] > self::MAX_FILE_SIZE) {
@@ -53,10 +66,4 @@ class TeamController extends AppController{
         }
         return true;
     }
-
-    public function teams(){
-
-        $this->render("teams");
-    }
-
 }
