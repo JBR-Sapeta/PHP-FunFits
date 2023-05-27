@@ -34,23 +34,24 @@ class TeamController extends AppController{
             $team = new Team($_POST['title'],$_POST['city'], $_POST['description'],$_POST['game'], $_FILES['file']['name']);
             $this->teamRepository->addTeam($team);
 
-            return $this->render("teams",  ['messages' => $this->message,'team' => $team]);
+            return $this->render("my-teams",  ['messages' => $this->message,'team' => $team]);
         }
 
         return $this->render("add-team",  ['messages' => $this->message]);
     }
 
+    public function allTeams(){
 
-    public function teams(){
-
-        $this->render("teams");
+        $teams = $this->teamRepository->getTeams();
+        $this->render("all-teams", ['teams' => $teams]);
     }
 
 
-    public function search(){
+    public function myTeams(){
 
-        $this->render("search");
+        $this->render("my-teams");
     }
+
 
 
     private function validate(array $file): bool

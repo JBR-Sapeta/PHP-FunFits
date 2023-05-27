@@ -12,9 +12,12 @@ Routing::get('signup','DefaultController');
 Routing::post('login','AuthController');
 Routing::post('register','AuthtController');
 
-Routing::get('teams','TeamController');
 Routing::post('addTeam','TeamController');
-Routing::post('search','TeamController');
+Routing::get('myTeams','TeamController');
+Routing::get('allTeams','TeamController');
+
+
+
 
 
 Routing::run($path);

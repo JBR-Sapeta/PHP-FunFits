@@ -36,22 +36,45 @@ class TeamRepository extends Repository{
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        $project = $stmt->fetch(PDO::FETCH_ASSOC);
+        $team = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($project == false) {
+        if ($team == false) {
             //Add Exception
             return null;
         }
 
-        return new Project(
-            $project['title'],
-            $project['city'],
-            $project['game'],
-            $project['description'],
-            $project['image']
+        return new Team(
+            $team['title'],
+            $team['city'],
+            $team['description'],
+            $team['game'],
+            $team['image']
         );
     }
 
+    public function getTeams(): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM teams;
+        ');
+        $stmt->execute();
+        $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+         foreach ($teams as $team) {
+             $result[] = new Team(
+                $team['title'],
+                $team['city'],
+                "",
+                $team['game'],
+                $team['image']
+             );
+         }
+
+        return $result;
+    }
     
 
 }
+

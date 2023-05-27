@@ -135,28 +135,33 @@
 
       <div class="search-results">
 
-        <article class="search-result">
-          <picture class="search-result__picture">
-            <img class="search-result__img" src="public/uploads/leah-hetteberg-IoJFOvbqF3c-unsplash.jpg" alt="Team" >
-          </picture>
-          <h3 class="search-result__headre">Lorem Ipsum Team</h3>
-          <div class="search-result__team-info">
-            <p class="search-result__info">
-              <i class="fa-solid fa-basketball base-select__icon search-result__icon"></i>
-              Footblal
-            </p>
-            <p class="search-result__info">
-              <i class="fa-solid fa-users search-result__icon"></i>
-              15
-            </p>
-            <p class="search-result__info">
-              <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  
-              Cracow
-          </div>
-          <div class="search-result__actions">
-            <button class="search-result__button" >More</button>
-          </div>
-        </article>
+        <?php foreach($teams as $team):?>
+
+            <article class="search-result">
+            <picture class="search-result__picture">
+              <img class="search-result__img" src="public/uploads/<?= $team->getImage(); ?>" alt="Team" >
+            </picture>
+            <h3 class="search-result__headre">
+              <?= $team->getTitle(); ?>
+            </h3>
+            <div class="search-result__team-info">
+              <p class="search-result__info">
+                <i class="fa-solid fa-basketball base-select__icon search-result__icon"></i>
+                <?= $team->getGame(); ?>
+              </p>
+              <p class="search-result__info">
+                <i class="fa-solid fa-users search-result__icon"></i>
+                15
+              </p>
+              <p class="search-result__info">
+                <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  
+                <?= $team->getCity(); ?>
+            </div>
+            <div class="search-result__actions">
+              <button class="search-result__button" >More</button>
+            </div>
+          </article>
+        <?php endforeach; ?>
 
       </div>
 
