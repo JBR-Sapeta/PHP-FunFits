@@ -1,192 +1,204 @@
 .auth-form--signin {
-    background-image: url('../img/auth/singup.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  
-  /*  ------------------ HEADER -------------------- */
-  
-  .auth-header__block {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: var(--color-white);
-  }
-  
-  .auth-header__header {
-    margin: 0 0 var(--space-15) 0;
-    color: var(--color-white);
-    font-family: 'Iceland', cursive;
-    font-size: var(--font-size-48);
-  }
-  
-  .auth-header__hr {
-    width: 300px;
-    height: 2px;
-    border: 0;
-    background: linear-gradient(
-      90deg,
-      var(--color-primary-light) 25%,
-      var(--color-secondary-light)
-    );
-  }
-  
-  .auth-header__slogan {
-    color: var(--color-white);
-    margin: var(--space-5);
-    font-size: var(--font-size-18);
-  }
-  
-  .auth-header__block--black h2,
-  .auth-header__block--black p {
-    color: var(--color-black);
-  }
-  
-  /*  ------------------ FORM -------------------- */
-  
-  .auth-form {
-    max-width: 450px;
-    width: 100%;
-    height: 624px;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    border-radius: var(--radius-12);
-  }
-  
-  .auth-form__container--signin {
-    background-color: rgba(0, 0, 0, 0.9);
-  }
-  
-  .auth-form__container {
-    width: 100%;
-    height: 100%;
-    padding-top: var(--space-70);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: var(--radius-12);
-  }
-  
-  .auth-form__block {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .auth-form__form {
-    width: 100%;
-    height: 100%;
-    margin-top: var(--space-30);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: var(--space-25);
-  }
-  
-  .auth-form__form--center {
-    margin-top: var(--space-50);
-  }
-  
-  .auth-form__info {
-    display: block;
-    width: 235px;
-    color: var(--color-white);
-    font-size: var(--font-size-16);
-    text-align: center;
-  }
-  
-  .auth-form__actions {
-    margin-top: var(--space-40);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .auth-form__actions--100 {
-      margin-top: var(--space-100);
-  }
-  
-  .auth-form__button {
-    padding: 2px var(--space-25);
-    border: 10px solid;
-    border-image-slice: 1;
-    border-width: 1px;
-    border-image-source: linear-gradient(
-      90deg,
-      var(--color-primary-light),
-      var(--color-secondary-light)
-    );
-    background-image: linear-gradient(
-      90deg,
-      var(--color-primary-light),
-      var(--color-secondary-light)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-size: var(--font-size-18);
-    font-weight: var(--font-weight-bold);
-    cursor: pointer;
-  }
-  
-  .auth-form__button:hover {
-    transform: translateY(-1px);
-  }
-  
-  .auth-form__button:active {
-    transform: translateY(1px);
-  }
-  
-  
-  
-  /*  ------------------ INPUT -------------------- */
-  
-  .base-input__container {
-    width: 235px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .base-input__field {
-    width: 100%;
-    min-height: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    border-bottom: 1px solid var(--color-white);
-    background-color: transparent;
-  }
-  
-  .base-input__icon {
-    margin-right: var(--space-10);
-    margin-left: var(--space-5);
-    font-size: var(--font-size-16);
-    color: var(--color-primary-light);
-  }
-  
-  .base-input__input {
-    order: 2;
-    width: 200px;
-    height: 40px;
-    border: none;
-    background-color: transparent;
-    color: var(--color-white);
-    font-size: var(--font-size-16);
-  }
-  
-  .base-input__input:focus {
-    outline: none;
-  }
-  
-  .base-input__input::placeholder {
-    color: var(--color-gray-100);
-  }
-  
+  background-image: url('../img/auth/singup.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*  ------------------ HEADER -------------------- */
+
+.auth-header__block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+}
+
+.auth-header__header {
+  margin: 0 0 var(--space-15) 0;
+  color: var(--color-white);
+  font-family: 'Iceland', cursive;
+  font-size: var(--font-size-48);
+}
+
+.auth-header__hr {
+  width: 300px;
+  height: 2px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary-light) 25%,
+    var(--color-secondary-light)
+  );
+}
+
+.auth-header__slogan {
+  color: var(--color-white);
+  margin: var(--space-5);
+  font-size: var(--font-size-18);
+}
+
+.auth-header__block--black h2,
+.auth-header__block--black p {
+  color: var(--color-black);
+}
+
+/*  ------------------ FORM -------------------- */
+
+.auth-form {
+  max-width: 450px;
+  width: 100%;
+  height: 624px;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  border-radius: var(--radius-12);
+}
+
+.auth-form__container--signin {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.auth-form__container {
+  width: 100%;
+  height: 100%;
+  padding-top: var(--space-70);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius-12);
+}
+
+.auth-form__block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-form__form {
+  width: 100%;
+  height: 100%;
+  margin-top: var(--space-30);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.auth-form__form--center {
+  margin-top: var(--space-40);
+}
+
+.auth-form__info {
+  display: block;
+  width: 235px;
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+  text-align: center;
+}
+
+.auth-form__actions {
+  margin-top: var(--space-40);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form__actions--100 {
+  margin-top: var(--space-100);
+}
+
+.auth-form__button {
+  padding: 2px var(--space-25);
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 1px;
+  border-image-source: linear-gradient(
+    90deg,
+    var(--color-primary-light),
+    var(--color-secondary-light)
+  );
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary-light),
+    var(--color-secondary-light)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+
+.auth-form__button:hover {
+  transform: translateY(-1px);
+}
+
+.auth-form__button:active {
+  transform: translateY(1px);
+}
+
+/*  ------------------ INPUT -------------------- */
+
+.base-input__container {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.base-input__field {
+  width: 100%;
+  min-height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid var(--color-white);
+  background-color: transparent;
+}
+
+.base-input__field--error {
+  border-bottom: 1px solid var(--color-red-light);
+}
+
+.base-input__field--error > .base-input__icon {
+  color: var(--color-red-light);
+}
+
+.base-input__icon {
+  margin-right: var(--space-10);
+  margin-left: var(--space-5);
+  font-size: var(--font-size-16);
+  color: var(--color-primary-light);
+}
+
+.base-input__input {
+  order: 2;
+  width: 200px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+}
+
+.base-input__input:focus {
+  outline: none;
+}
+
+.base-input__input::placeholder {
+  color: var(--color-gray-100);
+}
+.validation-error {
+  display: block;
+  min-height: 20px;
+  height: 100%;
+  margin: 3px 0 0 0;
+  color: var(--color-red-light);
+  font-size: var(--font-size-12);
+}

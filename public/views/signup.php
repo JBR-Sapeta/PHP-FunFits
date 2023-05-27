@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <head>
-  <script
-    src="https://kit.fontawesome.com/46d253cbeb.js"
-    crossorigin="anonymous"
-  ></script>
   <title>Sign Up</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,6 +17,7 @@
     src="https://kit.fontawesome.com/46d253cbeb.js"
     crossorigin="anonymous"
   ></script>
+  <script type="text/javascript" src="public/js/registration.js"defer></script>
 </head>
 
 <body>
@@ -100,55 +97,64 @@
     <div class="main__page">
       <section class="auth-form auth-form--signin">
         <div class="auth-form__container auth-form__container--signin">
+          
           <div class="auth-header__block">
             <h2 class="auth-header__header">WaveUp</h2>
             <hr class="auth-header__hr" />
             <p class="auth-header__slogan">Login in to Your Account</p>
           </div>
 
-          <form class="auth-form__form auth-form__form--center">
+          <form class="auth-form__form auth-form__form--center" action="register" method="POST">
             <div class="base-input__container">
-              <div class="base-input__field">
+              <div id="username-div" class="base-input__field">
                 <i class="fa-solid fa-user fa-xl base-input__icon"></i>
                 <input
+                  name="username"
                   class="base-input__input"
                   type="text"
                   placeholder="Username"
                 />
               </div>
+              <p id="username-p" class="validation-error"></p>
             </div>
 
             <div class="base-input__container">
-              <div class="base-input__field">
+              <div id="email-div" class="base-input__field">
                 <i class="fa-solid fa-envelope base-input__icon"></i>
                 <input
+                  name="email"
                   class="base-input__input"
                   type="text"
                   placeholder="E-mail"
                 />
               </div>
+              <p id="email-p" class="validation-error"></p>
             </div>
 
             <div class="base-input__container">
-              <div class="base-input__field">
+              <div id="password-div" class="base-input__field">
                 <i class="fa-solid fa-lock base-input__icon"></i>
                 <input
+                  name="password"
                   class="base-input__input"
                   type="password"
                   placeholder="Password"
                 />
               </div>
+              <p id="password-p"  class="validation-error"></p>
             </div>
 
             <div class="base-input__container">
-              <div class="base-input__field">
+              <div id="confirm-div" class="base-input__field">
                 <i class="fa-solid fa-lock base-input__icon"></i>
                 <input
+                  name="confirm" 
                   class="base-input__input"
                   type="password"
                   placeholder="Repeat Password"
                 />
               </div>
+              <p id="confirm-p" class="validation-error"></p>
             </div>
 
             <div class="auth-form__actions">
