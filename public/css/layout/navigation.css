@@ -15,15 +15,19 @@
   margin-left: var(--space-50);
 }
 .navigation__button {
-  display: block;
+  display: none;
   border: none;
   background-color: var(--color-white);
   cursor: pointer;
 }
 
+.navigation__button--acticve {
+  display: block;
+
+}
+
 .navigation__icon {
-  width: 36px;
-  height: 36px;
+  font-size: var(--font-size-32);
 }
 
 .navigation__logo {
@@ -93,7 +97,6 @@
     font-size: var(--font-size-16);
   }
 
- 
   .navigation__header {
     width: 140px;
     height: 49.5px;

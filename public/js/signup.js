@@ -1,5 +1,3 @@
-const form = document.querySelector('form');
-
 const usernameInput = document.querySelector("input[name='username']");
 const emailInput = document.querySelector("input[name='email']");
 const passwordInput = document.querySelector("input[name='password']");

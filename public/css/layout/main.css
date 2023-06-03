@@ -21,4 +21,5 @@
   padding: var(--space-100) 0;
   max-width: var(--page-size);
   width: 100%;
+  transition: 0.3s width ease-in;
 }

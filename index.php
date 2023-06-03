@@ -10,7 +10,7 @@ Routing::get('','DefaultController');
 Routing::get('signin','AuthController');
 Routing::get('signup','AuthController');
 Routing::post('login','AuthController');
-Routing::post('register','AuthtController');
+Routing::post('register','AuthController');
 
 Routing::post('addTeam','TeamController');
 Routing::get('myTeams','TeamController');

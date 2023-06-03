@@ -1,4 +1,9 @@
 .sidenav {
+  display: none;
+}
+
+.sidenav--active {
+  display: block;
   position: relative;
   width: 260px;
   height: 100%;
@@ -13,6 +18,7 @@
   border-right: 1px solid var(--color-gray-100);
   background-color: var(--color-white);
   z-index: 2;
+  animation: 0.3s ease-out slideIn;
 }
 
 .sidenav__profile {
@@ -138,5 +144,23 @@
 
   .sidenav__profile {
     border: none;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-280px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-280px);
   }
 }
