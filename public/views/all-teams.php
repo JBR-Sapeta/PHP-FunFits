@@ -17,37 +17,19 @@
   <link rel="stylesheet" type="text/css" href="public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
   <link rel="stylesheet" type="text/css" href="public/css/search.css" />
-  <script
-    src="https://kit.fontawesome.com/46d253cbeb.js"
-    crossorigin="anonymous"
-  ></script>
+  <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="public/js/ui-sidebar.js"defer></script>
+  <script type="text/javascript" src="public/js/search.js"defer></script>
+
 </head>
 
 <body>
-  <header class="navigation">
-    <div class="naviagtion__menu">
-      <button class="navigation__button" type="button">
-        <img src="public/img/menu.svg" alt="Menu button" class="navigation__icon" />
-      </button>
-    </div>
 
-    <div class="navigation__logo">
-      <img class="navigation__header" src="public/img/FunFits.svg" />
-    </div>
-
-    <div class="navigation__actions">
-      <button class="navigation__link hover-animation">
-        <a href="#">Sign In</a>
-      </button>
-      <button class="navigation__link hover-animation">
-        <a href="#"></a>Sign Up
-      </button>
-    </div>
-  </header>
+  <?php include('public/views/layout/navigation.php') ?>
 
   <main class="main">
     <div class="main__sidebar">
-      <nav class="sidenav">
+      <nav id="sidebar" class="sidenav">
         <div class="sidenav__container">
           <div class="sidenav__profile">
             <h3 class="sidenav__name">John Smith</h3>
@@ -61,14 +43,14 @@
           </div>
 
           <ul class="sidenav__menu">
-            <li class="menu__button active">
+            <li class="menu__button ">
               <a class="menu__link" href="">
                 <i class="fa-solid fa-user"></i>
                 Profile
               </a>
             </li>
-            <li class="menu__button">
-              <a class="menu__link" href="">
+            <li class="menu__button active" >
+              <a class="menu__link" href="/allTeams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
@@ -101,7 +83,7 @@
       <section class="search">
       
       <div class="search__field">
-        <input class="search__input" type="text" placeholder="Serach by team name" name="search"/>
+        <input id="title" class="search__input" type="text" placeholder="Serach by team name" />
         <div class="search__action">
           <button class="search__button" type="button">
             <i class="fa-sharp fa-solid fa-magnifying-glass search__icon-20"></i>
@@ -116,14 +98,14 @@
             <i class="fa-sharp fa-solid fa-city search__icon-16"></i>  
             City
           </label>
-          <input id="city" type="text" placeholder="City" name="city" />
+          <input id="city" type="text" placeholder="City"  />
         </div>
         <div class="search__game">
           <label for="game" class="search__label">
             <i class="fa-solid fa-basketball base-select__icon search__icon-16"></i>
             Category:
           </label>
-          <select name="game" id="game" class="search__select">
+          <select  id="game" class="search__select">
             <option value="Football">Football</option>
             <option value="Voleyball">Voleyball</option>
             <option value="Basketball">Basketball</option>
@@ -133,33 +115,33 @@
       </div>
 
 
-      <div class="search-results">
+      <div id="teamsContainer" class="search-results">
 
         <?php foreach($teams as $team):?>
 
             <article class="search-result">
-            <picture class="search-result__picture">
-              <img class="search-result__img" src="public/uploads/<?= $team->getImage(); ?>" alt="Team" >
-            </picture>
-            <h3 class="search-result__headre">
-              <?= $team->getTitle(); ?>
-            </h3>
-            <div class="search-result__team-info">
-              <p class="search-result__info">
-                <i class="fa-solid fa-basketball base-select__icon search-result__icon"></i>
-                <?= $team->getGame(); ?>
-              </p>
-              <p class="search-result__info">
-                <i class="fa-solid fa-users search-result__icon"></i>
-                15
-              </p>
-              <p class="search-result__info">
-                <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  
-                <?= $team->getCity(); ?>
-            </div>
-            <div class="search-result__actions">
-              <button class="search-result__button" >More</button>
-            </div>
+              <picture class="search-result__picture">
+                <img class="search-result__img" src="public/uploads/<?= $team->getImage(); ?>" alt="Team" >
+              </picture>
+              <h3 class="search-result__headre">
+                <?= $team->getTitle(); ?>
+              </h3>
+              <div class="search-result__team-info">
+                <p class="search-result__info">
+                  <i class="fa-solid fa-basketball base-select__icon search-result__icon"></i>
+                  <?= $team->getGame(); ?>
+                </p>
+                <p class="search-result__info">
+                  <i class="fa-solid fa-users search-result__icon"></i>
+                  15
+                </p>
+                <p class="search-result__info">
+                  <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  
+                  <?= $team->getCity(); ?>
+              </div>
+              <div class="search-result__actions">
+                <button class="search-result__button" >More</button>
+              </div>
           </article>
         <?php endforeach; ?>
 
@@ -169,72 +151,6 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__baner">
-        <div class="footer__logo">
-          <h2 class="footer__header">FunFits</h2>
-          <p class="footer__slogan">Explore, Talk, Meet</p>
-        </div>
-        <div class="footer__navigation">
-          <a class="footer__link hover-animation"> Home </a>
-          <a class="footer__link hover-animation"> About </a>
-          <a class="footer__link hover-animation"> Contact </a>
-          <a class="footer__link hover-animation"> Join Us </a>
-        </div>
-      </div>
-      <hr class="footer__hr" />
-      <div class="footer__media">
-        <ul class="footer__list">
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-facebook"></i>
-              Facebook
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-instagram"></i>
-              Instagram
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-twitter"></i>
-              Twitter
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-youtube"></i>
-              YouTube
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__rights">
-        <p>Copyright © 2023 by FunFits Inc. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <?php include('public/views/layout/footer.php') ?>
+
 </body>

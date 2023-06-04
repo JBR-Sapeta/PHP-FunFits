@@ -15,7 +15,7 @@ Routing::post('register','AuthController');
 Routing::post('addTeam','TeamController');
 Routing::get('myTeams','TeamController');
 Routing::get('allTeams','TeamController');
-
+Routing::post('search','TeamController');
 
 
 

@@ -57,7 +57,7 @@ class TeamRepository extends Repository{
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM teams;
+            SELECT * FROM teams
         ');
         $stmt->execute();
         $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -73,6 +73,21 @@ class TeamRepository extends Repository{
          }
 
         return $result;
+    }
+
+    public function searchTeam( string $title, string $city, string $game): array
+    {
+        $title = '%'.strtolower($title).'%';
+        $city = '%'.strtolower($city).'%';
+       
+        $stmt = $this->database->connect()->prepare('
+        SELECT * FROM teams WHERE LOWER(title) LIKE :title AND LOWER(city) LIKE :city
+        ');
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':city', $city, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
 
