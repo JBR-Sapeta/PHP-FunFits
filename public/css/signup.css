@@ -102,7 +102,7 @@
 }
 
 .auth-form__actions {
-  margin-top: var(--space-40);
+  margin-top: var(--space-10);
   width: 100%;
   display: flex;
   align-items: center;
@@ -111,6 +111,18 @@
 
 .auth-form__actions--100 {
   margin-top: var(--space-100);
+}
+
+.auth-form__messages {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form__message--error {
+  font-size: var(--font-size-14);
+  color: var(--color-red-light);
 }
 
 .auth-form__button {

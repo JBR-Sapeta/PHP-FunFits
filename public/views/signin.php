@@ -92,12 +92,22 @@
 
             <div class="auth-form__messages">
               <p>
-              <?php if(isset($messages)){
-                foreach($messages as $message){
-                  echo $message;
+                <span class="auth-form__message--error"> 
+                <?php if(isset($errors)){
+                  foreach($errors as $error){
+                    echo $error;
+                  }
                 }
-              }
-              ?>
+                ?>
+              </span>
+              <span class="auth-form__message--succes"> 
+                <?php if(isset($messages)){
+                  foreach($messages as $message){
+                    echo $message;
+                  }
+                }
+                ?>
+              </span>
               </p>
             </div>
 

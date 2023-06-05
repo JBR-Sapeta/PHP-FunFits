@@ -114,6 +114,20 @@
               <p id="confirm-p" class="validation-error"></p>
             </div>
 
+            <div class="auth-form__messages">
+              <p>
+                <span class="auth-form__message--error"> 
+                <?php if(isset($errors)){
+                  foreach($errors as $error){
+                    echo $error;
+                  }
+                }
+                ?>
+              </span>
+              </p>
+            </div>
+
+
             <div class="auth-form__actions">
               <button class="auth-form__button" type="submit">Sign Up</button>
             </div>
