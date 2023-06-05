@@ -1,3 +1,11 @@
+<?php 
+  session_start();
+  if(!isset($_SESSION['userId'])){
+    $url = "http://$_SERVER[HTTP_HOST]";
+    header("Location: {$url}/signin");
+  }
+?>
+
 <!DOCTYPE html>
 <head>
   <script
@@ -31,12 +39,13 @@
     <div class="main__sidebar">
       <nav id="sidebar" class="sidenav">
         <div class="sidenav__container">
+          
           <div class="sidenav__profile">
-            <h3 class="sidenav__name">John Smith</h3>
+            <h3 class="sidenav__name"><?= $_SESSION['username'] ; ?></h3>
             <picture class="sidenav__avatar">
               <img
                 class="sidenav__img"
-                src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                src="public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
                 alt="User avatar"
               />
             </picture>
@@ -50,7 +59,7 @@
               </a>
             </li>
             <li class="menu__button active" >
-              <a class="menu__link" href="/allTeams">
+              <a class="menu__link" href="/allteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
@@ -69,7 +78,7 @@
               >
             </li>
             <li class="menu__button">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/logout">
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
                 Logout</a
               >

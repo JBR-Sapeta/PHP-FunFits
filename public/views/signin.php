@@ -1,3 +1,12 @@
+<?php 
+  session_start();
+  // if(isset($_SESSION['userId'])){
+  //   $url = "http://$_SERVER[HTTP_HOST]";
+  //   header("Location: {$url}/allTeams");
+  // }
+?>
+
+
 <!DOCTYPE html>
 <head>
   <script

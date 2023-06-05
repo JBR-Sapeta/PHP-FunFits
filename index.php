@@ -9,12 +9,13 @@ Routing::get('','DefaultController');
 
 Routing::get('signin','AuthController');
 Routing::get('signup','AuthController');
+Routing::post('logout','AuthController');
 Routing::post('login','AuthController');
 Routing::post('register','AuthController');
 
-Routing::post('addTeam','TeamController');
-Routing::get('myTeams','TeamController');
-Routing::get('allTeams','TeamController');
+Routing::post('addteam','TeamController');
+Routing::get('myteams','TeamController');
+Routing::get('allteams','TeamController');
 Routing::post('search','TeamController');
 
 

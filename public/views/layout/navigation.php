@@ -13,11 +13,21 @@
     </div>
 
     <div class="navigation__actions">
+
+    <?php if(!isset($_SESSION['userId'])) : ?>
       <button class="navigation__link hover-animation">
         <a href="/signin">Sign In</a>
       </button>
       <button class="navigation__link hover-animation">
         <a href="/signup">Sign Up</a>
       </button>
+    <?php else : ?>
+      <button class="navigation__link hover-animation">
+        <a href="/logout">Logout</a>
+      </button>
+    <?php endif; ?>
+
+    
+     
     </div>
   </header>

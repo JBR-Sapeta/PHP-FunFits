@@ -1,3 +1,11 @@
+<?php 
+  session_start();
+  if(!isset($_SESSION['userId'])){
+    $url = "http://$_SERVER[HTTP_HOST]";
+    header("Location: {$url}/signin");
+  }
+?>
+
 <!DOCTYPE html>
 <head>
   <script
@@ -17,58 +25,39 @@
   <link rel="stylesheet" type="text/css" href="public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
   <link rel="stylesheet" type="text/css" href="public/css/newteam.css" />
-  <script
-    src="https://kit.fontawesome.com/46d253cbeb.js"
-    crossorigin="anonymous"
-  ></script>
+  <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="public/js/ui-sidebar.js"defer></script>
 </head>
 
 <body>
-  <header class="navigation">
-    <div class="naviagtion__menu">
-      <button class="navigation__button" type="button">
-        <img src="public/img/menu.svg" alt="Menu button" class="navigation__icon" />
-      </button>
-    </div>
 
-    <div class="navigation__logo">
-      <img class="navigation__header" src="public/img/FunFits.svg" />
-    </div>
-
-    <div class="navigation__actions">
-      <button class="navigation__link hover-animation">
-        <a href="#">Sign In</a>
-      </button>
-      <button class="navigation__link hover-animation">
-        <a href="#"></a>Sign Up
-      </button>
-    </div>
-  </header>
+  <?php include('public/views/layout/navigation.php') ?>
 
   <main class="main">
     <div class="main__sidebar">
-      <nav class="sidenav">
+      <nav id="sidebar" class="sidenav">
         <div class="sidenav__container">
+          
           <div class="sidenav__profile">
-            <h3 class="sidenav__name">John Smith</h3>
+            <h3 class="sidenav__name"><?= $_SESSION['username'] ; ?></h3>
             <picture class="sidenav__avatar">
               <img
                 class="sidenav__img"
-                src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                src="public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
                 alt="User avatar"
               />
             </picture>
           </div>
 
           <ul class="sidenav__menu">
-            <li class="menu__button active">
+            <li class="menu__button ">
               <a class="menu__link" href="">
                 <i class="fa-solid fa-user"></i>
                 Profile
               </a>
             </li>
-            <li class="menu__button">
-              <a class="menu__link" href="">
+            <li class="menu__button active" >
+              <a class="menu__link" href="/allteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
@@ -180,72 +169,5 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__baner">
-        <div class="footer__logo">
-          <h2 class="footer__header">FunFits</h2>
-          <p class="footer__slogan">Explore, Talk, Meet</p>
-        </div>
-        <div class="footer__navigation">
-          <a class="footer__link hover-animation"> Home </a>
-          <a class="footer__link hover-animation"> About </a>
-          <a class="footer__link hover-animation"> Contact </a>
-          <a class="footer__link hover-animation"> Join Us </a>
-        </div>
-      </div>
-      <hr class="footer__hr" />
-      <div class="footer__media">
-        <ul class="footer__list">
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-facebook"></i>
-              Facebook
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-instagram"></i>
-              Instagram
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-twitter"></i>
-              Twitter
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-youtube"></i>
-              YouTube
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__rights">
-        <p>Copyright © 2023 by FunFits Inc. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <?php include('public/views/layout/footer.php') ?>
 </body>

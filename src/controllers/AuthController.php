@@ -8,15 +8,13 @@ class AuthController extends AppController{
 
     private $userRepository;
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         $this->userRepository = new UserRepository();
     }
 
 
     public function signup(){
-
         $this->render("signup");
     }
 
@@ -72,13 +70,12 @@ class AuthController extends AppController{
 
 
     public function signin(){
-
         $this->render("signin");
     }
 
 
     public function login(){
-        
+
         if (!$this->isPost()) {
             return $this->render('signin');
         }
@@ -104,13 +101,21 @@ class AuthController extends AppController{
             return $this->render('signin', ['errors' => ['Wrong password.']]);
         }
 
+        session_start();
+        $_SESSION['userId'] = $user->getId();
+        $_SESSION['username'] = $user->getUsername();
+        $_SESSION['avatar'] = $user->getAvatar();
+  
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/allTeams");
     }
 
     
     
-
+    public function logout(){
+        $this->render("logout");
+    }
   
 
 }

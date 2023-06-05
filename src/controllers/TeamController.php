@@ -22,7 +22,7 @@ class TeamController extends AppController{
 
 
 
-    public function addTeam(){
+    public function addteam(){
         
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
@@ -40,14 +40,14 @@ class TeamController extends AppController{
         return $this->render("add-team",  ['messages' => $this->message]);
     }
 
-    public function allTeams(){
+    public function allteams(){
 
         $teams = $this->teamRepository->getTeams();
         $this->render("all-teams", ['teams' => $teams]);
     }
 
 
-    public function myTeams(){
+    public function myteams(){
 
         $this->render("my-teams");
     }

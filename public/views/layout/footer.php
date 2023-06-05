@@ -5,12 +5,23 @@
           <h2 class="footer__header">FunFits</h2>
           <p class="footer__slogan">Compete, Play, Win</p>
         </div>
-        <div class="footer__navigation">
-          <a class="footer__link hover-animation"> Home </a>
-          <a class="footer__link hover-animation"> About </a>
-          <a class="footer__link hover-animation"> Contact </a>
-          <a class="footer__link hover-animation"> Join Us </a>
+
+        <?php if(!isset($_SESSION['userId'])) : ?>
+          <div class="footer__navigation">
+          <a href="/" class="footer__link hover-animation"> Home </a>
+          <a href="/signup" class="footer__link hover-animation"> Join Us </a>
+          <a href="/signin" class="footer__link hover-animation"> Sign In </a>
         </div>
+        <?php else : ?>
+          <div class="footer__navigation">
+          <a href="/allteams" class="footer__link hover-animation"> Profile </a>
+          <a href="/allteams" class="footer__link hover-animation"> Search </a>
+          <a href="/addteam" class="footer__link hover-animation"> Teams </a>
+
+        </div>
+        <?php endif; ?>
+
+       
       </div>
       <hr class="footer__hr" />
       <div class="footer__media">

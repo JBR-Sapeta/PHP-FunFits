@@ -12,7 +12,7 @@ class User {
     private $id;
 
 
-    public function __construct( string $email, string $password, string $username, string $name="User", string $surname="Anonymous", ?string $avatar="default_avatar", ?string $phone="", int $id=0 ){
+    public function __construct( string $email, string $password, string $username, string $name="User", string $surname="Anonymous", ?string $avatar="default_avatar.png", ?string $phone="", int $id=0 ){
 
         $this->email = $email;
         $this->password = $password;
