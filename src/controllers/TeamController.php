@@ -18,6 +18,20 @@ class TeamController extends AppController{
         parent::__construct();
         $this->teamRepository = new TeamRepository();
     }
+    
+
+    public function team(string $id){
+
+        if(!is_numeric($id) ){
+            return $this->render("team", ['team' => null]);
+        }
+
+        $int = (int)$id;
+
+        $team = $this->teamRepository->getTeam($int);
+        return $this->render("team", ['team' => $team]);
+    }
+
 
     public function addteam(){
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -48,16 +62,16 @@ class TeamController extends AppController{
 
 
 
-    public function team(string $id){
+    public function menageteam(string $id){
 
         if(!is_numeric($id) ){
-            return $this->render("team", ['team' => null]);
+            return $this->render("menage-team", ['team' => null]);
         }
 
         $int = (int)$id;
 
         $team = $this->teamRepository->getTeam($int);
-        return $this->render("team", ['team' => $team]);
+        return $this->render("menage-team", ['team' => $team]);
     }
 
 
@@ -94,8 +108,8 @@ class TeamController extends AppController{
     
 
 
-    private function validate(array $file): bool
-    {
+    private function validate(array $file): bool{
+
         if ($file['size'] > self::MAX_FILE_SIZE) {
             $this->message[] = 'File is too large for destination file system.';
             return false;

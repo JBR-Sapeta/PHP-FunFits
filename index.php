@@ -18,6 +18,7 @@ Routing::get('myteams','TeamController');
 Routing::get('allteams','TeamController');
 Routing::post('search','TeamController');
 Routing::get('team','TeamController');
+Routing::get('menageteam','TeamController');
 Routing::post('deleteteam','TeamController');
 
 
