@@ -4,9 +4,8 @@ const gameInput = document.getElementById('game');
 
 const searchButton = document.getElementById('search__button');
 
-console.log(searchButton);
-
 const teamsContainer = document.getElementById('teamsContainer');
+const notFoundContainer = document.getElementById('no-results');
 
 titleInput.addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
@@ -17,8 +16,6 @@ titleInput.addEventListener('keyup', function (event) {
       city: cityInput.value,
       game: gameInput.value,
     };
-
-    console.log(data);
 
     fetch('/search', {
       method: 'POST',
@@ -31,8 +28,16 @@ titleInput.addEventListener('keyup', function (event) {
         return response.json();
       })
       .then(function (teams) {
+        if (!teams.length) {
+          notFoundContainer.classList.add('no-results--show');
+        } else {
+          notFoundContainer.classList.remove('no-results--show');
+        }
         teamsContainer.innerHTML = '';
         renderTeams(teams);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 });
@@ -43,8 +48,6 @@ searchButton.addEventListener('click', function (_event) {
     city: cityInput.value,
     game: gameInput.value,
   };
-
-  console.log(data);
 
   fetch('/search', {
     method: 'POST',
@@ -57,7 +60,12 @@ searchButton.addEventListener('click', function (_event) {
       return response.json();
     })
     .then(function (teams) {
-      console.log(teams);
+      if (!teams.length) {
+        notFoundContainer.classList.add('no-results--show');
+      } else {
+        notFoundContainer.classList.remove('no-results--show');
+      }
+
       teamsContainer.innerHTML = '';
       renderTeams(teams);
     })
@@ -73,6 +81,7 @@ function renderTeams(teams) {
 }
 
 function renderTeam(team) {
+  const id = Number(team.id);
   const html = `
     <article class="search-result">
         <picture class="search-result__picture">
@@ -95,7 +104,7 @@ function renderTeam(team) {
             ${team.city}
         </div>
         <div class="search-result__actions">
-            <button class="search-result__button" >More</button>
+            <a class="search-result__button" href="/team/${id}">More</a>
         </div>
     </article>
     `;

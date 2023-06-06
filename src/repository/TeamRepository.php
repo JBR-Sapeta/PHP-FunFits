@@ -28,7 +28,7 @@ class TeamRepository extends Repository{
     public function getTeam (int $id): ?Team{
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.teams WHERE id = :id
+            SELECT * FROM teams WHERE id = :id
         ');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();

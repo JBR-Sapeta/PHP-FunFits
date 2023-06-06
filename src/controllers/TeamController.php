@@ -14,14 +14,12 @@ class TeamController extends AppController{
     private $messages = []; 
     private $teamRepository;
 
-    public function __construct()
-    {
+    public function __construct(){
         parent::__construct();
         $this->teamRepository = new TeamRepository();
     }
 
     public function addteam(){
-        
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'], 
@@ -41,20 +39,44 @@ class TeamController extends AppController{
         return $this->render("add-team",  ['messages' => $this->message]);
     }
 
-    public function myteams(){
 
+
+    public function deleteteam(){
+        $teams = $this->teamRepository->getTeams();
+        return $this->render("all-teams", ['teams' => $teams]);
+    }
+
+
+
+    public function team(string $id){
+
+        if(!is_numeric($id) ){
+            return $this->render("team", ['team' => null]);
+        }
+
+        $int = (int)$id;
+
+        $team = $this->teamRepository->getTeam($int);
+        return $this->render("team", ['team' => $team]);
+    }
+
+
+
+    public function myteams(){
         session_start();
         $id = $_SESSION['userId'];
         $teams = $this->teamRepository->getTeamsForOwner($id);
-        $this->render("my-teams", ['teams' => $teams]);
+        return $this->render("my-teams", ['teams' => $teams]);
     }
+
 
 
     public function allteams(){
-
         $teams = $this->teamRepository->getTeams();
-        $this->render("all-teams", ['teams' => $teams]);
+        return $this->render("all-teams", ['teams' => $teams]);
     }
+
+
 
     public function search(){
         $contentType  = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) :"";

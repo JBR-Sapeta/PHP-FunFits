@@ -139,6 +139,29 @@
   cursor: pointer;
 }
 
+/* -------------------- Search NO Results  ---------------------*/
+
+.no-results {
+  display: none;
+}
+
+.no-results--show {
+  margin-top: var(--space-100);
+  display: block;
+}
+
+.no-results__picture {
+  display: block;
+  max-width: 328px;
+  max-height: 328px;
+}
+
+.no-results__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* -------------------- Search Results  ---------------------*/
 
 .search-results {

@@ -9,7 +9,7 @@
     </div>
 
     <div class="navigation__logo">
-      <img class="navigation__header" src="public/img/FunFits.svg" />
+      <img class="navigation__header" src="/public/img/FunFits.svg" />
     </div>
 
     <div class="navigation__actions">

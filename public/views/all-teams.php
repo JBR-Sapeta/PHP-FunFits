@@ -26,8 +26,8 @@
   <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
   <link rel="stylesheet" type="text/css" href="public/css/search.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="public/js/ui-sidebar.js"defer></script>
-  <script type="text/javascript" src="public/js/search.js"defer></script>
+  <script type="text/javascript" src="public/js/ui-sidebar.js" defer></script>
+  <script type="text/javascript" src="public/js/search.js" defer></script>
 
 </head>
 
@@ -123,6 +123,11 @@
         </div>
       </div>
 
+      <div id="no-results" class="no-results">
+          <picture class="no-results__picture">
+            <img class="no-results__img" src="/public/img/not_found.png" alt="Good bye!">
+          </picture>
+      </div>
 
       <div id="teamsContainer" class="search-results">
 
@@ -149,7 +154,7 @@
                   <?= $team->getCity(); ?>
               </div>
               <div class="search-result__actions">
-                <button class="search-result__button" >More</button>
+                <a class="search-result__button" href="/team/<?= $team->getId(); ?>" >More</a>
               </div>
           </article>
         <?php endforeach; ?>
