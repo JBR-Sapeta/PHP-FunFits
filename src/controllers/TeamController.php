@@ -20,8 +20,6 @@ class TeamController extends AppController{
         $this->teamRepository = new TeamRepository();
     }
 
-
-
     public function addteam(){
         
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
@@ -30,28 +28,33 @@ class TeamController extends AppController{
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            
-            $team = new Team($_POST['title'],$_POST['city'], $_POST['description'],$_POST['game'], $_FILES['file']['name']);
+            session_start();
+            $id = $_SESSION['userId'];    
+
+            $team = new Team($id, $_POST['title'],$_POST['city'], $_POST['description'],$_POST['game'], $_FILES['file']['name']);
             $this->teamRepository->addTeam($team);
 
-            return $this->render("my-teams",  ['messages' => $this->message,'team' => $team]);
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/myteams");
         }
 
         return $this->render("add-team",  ['messages' => $this->message]);
     }
+
+    public function myteams(){
+
+        session_start();
+        $id = $_SESSION['userId'];
+        $teams = $this->teamRepository->getTeamsForOwner($id);
+        $this->render("my-teams", ['teams' => $teams]);
+    }
+
 
     public function allteams(){
 
         $teams = $this->teamRepository->getTeams();
         $this->render("all-teams", ['teams' => $teams]);
     }
-
-
-    public function myteams(){
-
-        $this->render("my-teams");
-    }
-
 
     public function search(){
         $contentType  = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) :"";
@@ -63,7 +66,7 @@ class TeamController extends AppController{
             header('Content-Type: application/json');
             http_response_code(200);
 
-            echo json_encode($this->teamRepository->searchTeam( $decoded['title'], " ", " "));
+            echo json_encode($this->teamRepository->searchTeam( $decoded['title'], $decoded['city'], $decoded['game']));
         }
     }
     

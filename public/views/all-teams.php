@@ -66,7 +66,7 @@
             </li>
 
             <li class="menu__button">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/myteams">
                 <i class="fa-solid fa-users"></i>
                 Teams</a
               >
@@ -94,7 +94,7 @@
       <div class="search__field">
         <input id="title" class="search__input" type="text" placeholder="Serach by team name" />
         <div class="search__action">
-          <button class="search__button" type="button">
+          <button id="search__button" class="search__button" type="button">
             <i class="fa-sharp fa-solid fa-magnifying-glass search__icon-20"></i>
             Search
           </button>
@@ -142,7 +142,7 @@
                 </p>
                 <p class="search-result__info">
                   <i class="fa-solid fa-users search-result__icon"></i>
-                  15
+                  <?= $team->getMembers(); ?>
                 </p>
                 <p class="search-result__info">
                   <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  

@@ -7,6 +7,44 @@
   justify-content: flex-start;
 }
 
+.teams__actions {
+  margin-bottom: var(--space-40);
+}
+
+.teams__ul {
+  display: flex;
+  border-radius: var(--radius-24);
+  overflow: hidden;
+}
+
+.teams__link {
+  padding: var(--space-5) var(--space-15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-gray-200);
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+}
+
+.teams__link:hover{
+  background-color: var(--color-secondary-dark);
+}
+
+.teams__link--border {
+  border-right: 1px var(--color-white) solid;
+}
+
+.teams__link--active {
+  background-color: var(--color-primary-dark);
+}
+
+.teams__icon--nav {
+  margin-right: var(--space-10);
+  font-size: var(--font-size-16);
+  color: var(--color-white);
+}
+
 .teams__header {
   width: 100%;
   margin-bottom: var(--space-40);
@@ -22,6 +60,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: var(--space-50);
 }
 
 .team__item {
@@ -123,4 +162,15 @@
   transform: translateY(1px);
   background-color: var(--color-white);
   color: var(--color-secondary-dark);
+}
+
+.team__button--delete {
+  border: 2px solid var(--color-red-dark);
+  background-color: var(--color-red-dark);
+}
+
+.team__button--delete:active {
+  transform: translateY(1px);
+  background-color: var(--color-white);
+  color: var(--color-red-dark);
 }

@@ -108,7 +108,7 @@ class AuthController extends AppController{
   
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/allTeams");
+        header("Location: {$url}/allteams");
     }
 
     

@@ -1,3 +1,12 @@
+<?php 
+  session_start();
+  if(!isset($_SESSION['userId'])){
+    $url = "http://$_SERVER[HTTP_HOST]";
+    header("Location: {$url}/signin");
+  }
+?>
+
+
 <!DOCTYPE html>
 <head>
   <script
@@ -16,66 +25,49 @@
   <link rel="stylesheet" type="text/css" href="public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/teams.css" />
-  <script
-    src="https://kit.fontawesome.com/46d253cbeb.js"
-    crossorigin="anonymous"
-  ></script>
+  <link rel="stylesheet" type="text/css" href="public/css/my-teams.css" />
+  <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="public/js/ui-sidebar.js"defer></script>
+
+
 </head>
 
 <body>
-  <header class="navigation">
-    <div class="naviagtion__menu">
-      <button class="navigation__button" type="button">
-        <img src="public/img/menu.svg" alt="Menu button" class="navigation__icon" />
-      </button>
-    </div>
 
-    <div class="navigation__logo">
-      <img class="navigation__header" src="public/img/FunFits.svg" />
-    </div>
-
-    <div class="navigation__actions">
-      <button class="navigation__link hover-animation">
-        <a href="#">Sign In</a>
-      </button>
-      <button class="navigation__link hover-animation">
-        <a href="#"></a>Sign Up
-      </button>
-    </div>
-  </header>
+  <?php include('public/views/layout/navigation.php') ?>
 
   <main class="main">
     <div class="main__sidebar">
-      <nav class="sidenav">
+      <nav id="sidebar" class="sidenav">
         <div class="sidenav__container">
+          
           <div class="sidenav__profile">
-            <h3 class="sidenav__name">John Smith</h3>
+            <h3 class="sidenav__name"><?= $_SESSION['username'] ; ?></h3>
             <picture class="sidenav__avatar">
               <img
                 class="sidenav__img"
-                src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                src="public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
                 alt="User avatar"
               />
             </picture>
           </div>
 
           <ul class="sidenav__menu">
-            <li class="menu__button active">
+            <li class="menu__button ">
               <a class="menu__link" href="">
                 <i class="fa-solid fa-user"></i>
                 Profile
               </a>
             </li>
-            <li class="menu__button">
-              <a class="menu__link" href="">
+            <li class="menu__button" >
+              <a class="menu__link" href="/allteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
             </li>
 
-            <li class="menu__button">
-              <a class="menu__link" href="">
+            <li class="menu__button active">
+              <a class="menu__link" href="/myteams">
                 <i class="fa-solid fa-users"></i>
                 Teams</a
               >
@@ -87,7 +79,7 @@
               >
             </li>
             <li class="menu__button">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/logout">
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
                 Logout</a
               >
@@ -99,128 +91,94 @@
 
     <div class="main__page">
       <section class="teams">
+
+      
+
+        <nav class="teams__actions">
+          <ul class="teams__ul">
+            <li>
+              <a  class="teams__link teams__link--border teams__link--active" href="/myteams">
+                <i class="fa-solid fa-user-shield teams__icon--nav"></i>
+                Owner
+              </a>
+            </li>
+            <li>
+              <a  class="teams__link teams__link--border" href="/">
+              <i class="fa-solid fa-user teams__icon--nav"></i>
+                Member
+              </a>
+            </li>
+            <li>
+              <a class="teams__link" href="/addteam">
+                <i class="fa-solid fa-plus teams__icon--nav"></i>
+                Create team
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+ 
        <div class="teams__header">
           <h2>
             My Teams
           </h2>
        </div>
        <ul class="teams__list">
-          <li>
-            <article class="team__item">
-              <div class="team__name">
-                <h3><?= $team->getTitle() ?></h3>
-              </div>
+       <?php if(count($teams)) : ?>
+        <?php foreach($teams as $team):?>
+            <li>
+              <article class="team__item">
+                <div class="team__name">
+                  <h3><?= $team->getTitle() ?></h3>
+                </div>
 
-              <div class="team__info">
-                <p class="team__data">
-                  <i class="fa-solid fa-basketball team__icon"></i>  
-                  <?= $team->getGame() ?>
-                </p>
-                <p class="team__data">
-                  <i class="fa-sharp fa-solid fa-city team__icon"></i>
-                  <?= $team->getCity() ?>
-                </p>
-                <p class="team__data"> 
-                <i class="fa-solid fa-users team__icon"></i>
-                  15</p>
-              </div>
+                <div class="team__info">
+                  <p class="team__data">
+                    <i class="fa-solid fa-basketball team__icon"></i>  
+                    <?= $team->getGame() ?>
+                  </p>
+                  <p class="team__data">
+                    <i class="fa-sharp fa-solid fa-city team__icon"></i>
+                    <?= $team->getCity() ?>
+                  </p>
+                  <p class="team__data"> 
+                    <i class="fa-solid fa-users team__icon"></i>
+                    <?= $team->getMembers() ?>
+                  </p>
+                </div>
 
-              
                 <picture class="team__picture"> 
                   <img class="team__img" src="public/uploads/<?= $team->getImage() ?>" alt="Team">
                 </picture>
-              
+                
+                <div class="team__description">
+                  <p class="team__about">
+                  <i class="fa-solid fa-circle-info team__icon"></i>
+                    About us:
+                  </p>
+                  <p class="team__text">
+                  <?= $team->getDescription() ?>
+                  </p>
+                </div>
 
-              <div class="team__description">
-                <p class="team__about">
-                <i class="fa-solid fa-circle-info team__icon"></i>
-                  About us:
-                </p>
-                <p class="team__text">
-                <?= $team->getDescription() ?>
-                </p>
-              </div>
+                <div class="team__actions">
+                  <a class="team__button">Menage</a>
+                  <a id="<?= $team->getId() ?>" class="team__button team__button--delete">Delete</a>
+                </div>
 
-              <div class="team__actions">
-                <button class="team__button">Delete</button>
-                <button class="team__button">Leave</button>
-              </div>
-
-            </article>
-          </li>
-
+              </article>
+            </li>
+            <?php endforeach; ?>
+          <?php else : ?>
+            <li>
+              <h3>You do not own any team.</h3>
+            </li>
+          <?php endif; ?>
        </ul>
       
       </section>
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer__container">
-      <div class="footer__baner">
-        <div class="footer__logo">
-          <h2 class="footer__header">FunFits</h2>
-          <p class="footer__slogan">Explore, Talk, Meet</p>
-        </div>
-        <div class="footer__navigation">
-          <a class="footer__link hover-animation"> Home </a>
-          <a class="footer__link hover-animation"> About </a>
-          <a class="footer__link hover-animation"> Contact </a>
-          <a class="footer__link hover-animation"> Join Us </a>
-        </div>
-      </div>
-      <hr class="footer__hr" />
-      <div class="footer__media">
-        <ul class="footer__list">
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-facebook"></i>
-              Facebook
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-instagram"></i>
-              Instagram
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-twitter"></i>
-              Twitter
-            </a>
-          </li>
-          <li class="footer__li">
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.facebook.com"
-              class="footer__a"
-            >
-              <i class="fa-brands fa-youtube"></i>
-              YouTube
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="footer__rights">
-        <p>Copyright © 2023 by FunFits Inc. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+  <?php include('public/views/layout/footer.php') ?>
 </body>

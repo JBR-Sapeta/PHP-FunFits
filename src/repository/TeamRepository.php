@@ -13,11 +13,8 @@ class TeamRepository extends Repository{
             VALUES (?, ?, ?, ?, ?, ?)
         ');
 
-        //TODO you should get this value from logged user session.
-        $ownerId = 1;
-
         $stmt->execute([
-            $ownerId,
+            $team->getOwnerId(),
             $team->getTitle(),
             $team->getCity(),
             $team->getGame(),
@@ -44,11 +41,14 @@ class TeamRepository extends Repository{
         }
 
         return new Team(
+            $team['owner_id'],
             $team['title'],
             $team['city'],
             $team['description'],
             $team['game'],
-            $team['image']
+            $team['image'],
+            $team['members'],
+            $team['id']
         );
     }
 
@@ -64,11 +64,41 @@ class TeamRepository extends Repository{
 
          foreach ($teams as $team) {
              $result[] = new Team(
+                $team['owner_id'],
                 $team['title'],
                 $team['city'],
                 "",
                 $team['game'],
-                $team['image']
+                $team['image'],
+                $team['members'],
+                $team['id']
+             );
+         }
+
+        return $result;
+    }
+
+    public function getTeamsForOwner(int  $id): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM teams WHERE owner_id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($teams as $team) {
+             $result[] = new Team(
+                $team['owner_id'],
+                $team['title'],
+                $team['city'],
+                $team['description'],
+                $team['game'],
+                $team['image'],
+                $team['members'],
+                $team['id']
              );
          }
 
@@ -81,10 +111,11 @@ class TeamRepository extends Repository{
         $city = '%'.strtolower($city).'%';
        
         $stmt = $this->database->connect()->prepare('
-        SELECT * FROM teams WHERE LOWER(title) LIKE :title AND LOWER(city) LIKE :city
+        SELECT * FROM teams WHERE LOWER(title) LIKE :title AND LOWER(city) LIKE :city AND game = :game
         ');
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
         $stmt->bindParam(':city', $city, PDO::PARAM_STR);
+        $stmt->bindParam(':game', $game, PDO::PARAM_STR);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

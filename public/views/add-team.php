@@ -56,15 +56,15 @@
                 Profile
               </a>
             </li>
-            <li class="menu__button active" >
+            <li class="menu__button " >
               <a class="menu__link" href="/allteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
             </li>
 
-            <li class="menu__button">
-              <a class="menu__link" href="">
+            <li class="menu__button active">
+              <a class="menu__link" href="/myteams">
                 <i class="fa-solid fa-users"></i>
                 Teams</a
               >
@@ -87,84 +87,110 @@
     </div>
 
     <div class="main__page">
-      <section class="newteam">
-        <form class="newteam__form" action="addTeam" method="POST" ENCTYPE="multipart/form-data">
+      <section class="teams">
 
-            <h2 class="newteam__header">Create New Team</h2>
-          
-            <div class="base-input__container">
-                <i class="fa-sharp fa-solid fa-people-group base-input__icon"></i>
-                <input
-                  name="title"
-                  class="base-input__input"
-                  type="text"
-                  placeholder="Team name"
-                />
-            </div>
+        <nav class="teams__actions">
+          <ul class="teams__ul">
+            <li>
+              <a  class="teams__link teams__link--border " href="/myteams">
+                <i class="fa-solid fa-user-shield teams__icon--nav"></i>
+                Owner
+              </a>
+            </li>
+            <li>
+              <a  class="teams__link teams__link--border" href="/">
+              <i class="fa-solid fa-user teams__icon--nav"></i>
+                Member
+              </a>
+            </li>
+            <li>
+              <a class="teams__link teams__link--active" href="/addteam">
+                <i class="fa-solid fa-plus teams__icon--nav"></i>
+                Create team
+              </a>
+            </li>
+          </ul>
+        </nav>
 
-            <div class="base-input__container">
-                <i class="fa-sharp fa-solid fa-city base-input__icon"></i>
-                <input
-                  name="city"
-                  class="base-input__input"
-                  type="text"
-                  placeholder="City"
-                />
-            </div>
+        <article class="newteam">
+          <form class="newteam__form" action="addteam" method="POST" ENCTYPE="multipart/form-data">
 
-            <div class="base-textarea__container">
-              <label for="description">
-                <i class="fa-solid fa-pen base-textarea__icon"></i>
-                 Description
-              </label>
-              <textarea
-                id="description"
-                name="description"
-                class="base-textarea__input"
-                type="text"
-                placeholder="Team description..."
-                rows="8"
-                maxlength="400"
-              > </textarea>
-            </div>
-
-            <div class="base-select__container">
-               <label for="game">
-               <i class="fa-solid fa-basketball base-select__icon"></i>
-               Choose a game:
-              </label>
-              <select name="game" id="game" class="base-select__input">
-                <option value="Football">Football</option>
-                <option value="Voleyball">Voleyball</option>
-                <option value="Basketball">Basketball</option>
-                <option value="Tenis">Tenis</option>
-              </select> 
-            </div>
-
-            <div class="base-file__container">
-              <label> 
-                <i class="fa-regular fa-image base-file__icon "></i>
-                Image
-              </label>
-              <input type="file" name="file" class="base-file__input" /><br/>
-            </div>
-
+              <h2 class="newteam__header">Create New Team</h2>
             
-
-            <div class="newteam__actions">
-              <div class="newteam__messages">
-                <p>
-                <?php if(isset($messages)){
-                  foreach($messages as $message){
-                    echo $message;
-                  }
-                }
-                ?>
-                </p>
+              <div class="base-input__container">
+                  <i class="fa-sharp fa-solid fa-people-group base-input__icon"></i>
+                  <input
+                    name="title"
+                    class="base-input__input"
+                    type="text"
+                    placeholder="Team name"
+                  />
               </div>
-              <button class="newteam__button" type="submit">Create</button>
-            </div>
-        </form>
+
+              <div class="base-input__container">
+                  <i class="fa-sharp fa-solid fa-city base-input__icon"></i>
+                  <input
+                    name="city"
+                    class="base-input__input"
+                    type="text"
+                    placeholder="City"
+                  />
+              </div>
+
+              <div class="base-textarea__container">
+                <label for="description">
+                  <i class="fa-solid fa-pen base-textarea__icon"></i>
+                  Description
+                </label>
+                <textarea
+                  id="description"
+                  name="description"
+                  class="base-textarea__input"
+                  type="text"
+                  placeholder="Team description..."
+                  rows="8"
+                  maxlength="400"
+                > </textarea>
+              </div>
+
+              <div class="base-select__container">
+                <label for="game">
+                <i class="fa-solid fa-basketball base-select__icon"></i>
+                Choose a game:
+                </label>
+                <select name="game" id="game" class="base-select__input">
+                  <option value="Football">Football</option>
+                  <option value="Voleyball">Voleyball</option>
+                  <option value="Basketball">Basketball</option>
+                  <option value="Tenis">Tenis</option>
+                </select> 
+              </div>
+
+              <div class="base-file__container">
+                <label> 
+                  <i class="fa-regular fa-image base-file__icon "></i>
+                  Image
+                </label>
+                <input type="file" name="file" class="base-file__input" /><br/>
+              </div>
+
+              
+
+              <div class="newteam__actions">
+                <div class="newteam__messages">
+                  <p>
+                  <?php if(isset($messages)){
+                    foreach($messages as $message){
+                      echo $message;
+                    }
+                  }
+                  ?>
+                  </p>
+                </div>
+                <button class="newteam__button" type="submit">Create</button>
+              </div>
+          </form>
+        </article>
       </section>
     </div>
   </main>

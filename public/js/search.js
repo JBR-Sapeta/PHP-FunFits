@@ -2,13 +2,23 @@ const titleInput = document.getElementById('title');
 const cityInput = document.getElementById('city');
 const gameInput = document.getElementById('game');
 
+const searchButton = document.getElementById('search__button');
+
+console.log(searchButton);
+
 const teamsContainer = document.getElementById('teamsContainer');
 
 titleInput.addEventListener('keyup', function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
 
-    const data = { title: this.value };
+    const data = {
+      title: this.value,
+      city: cityInput.value,
+      game: gameInput.value,
+    };
+
+    console.log(data);
 
     fetch('/search', {
       method: 'POST',
@@ -25,6 +35,35 @@ titleInput.addEventListener('keyup', function (event) {
         renderTeams(teams);
       });
   }
+});
+
+searchButton.addEventListener('click', function (_event) {
+  const data = {
+    title: titleInput.value,
+    city: cityInput.value,
+    game: gameInput.value,
+  };
+
+  console.log(data);
+
+  fetch('/search', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (teams) {
+      console.log(teams);
+      teamsContainer.innerHTML = '';
+      renderTeams(teams);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 function renderTeams(teams) {
@@ -49,7 +88,7 @@ function renderTeam(team) {
         </p>
         <p class="search-result__info">
             <i class="fa-solid fa-users search-result__icon"></i>
-            15
+            ${team.members}
         </p>
         <p class="search-result__info">
             <i class="fa-sharp fa-solid fa-city search-result__icon"></i>  
