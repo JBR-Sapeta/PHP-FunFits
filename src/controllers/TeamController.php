@@ -19,6 +19,7 @@ class TeamController extends AppController{
         $this->teamRepository = new TeamRepository();
     }
     
+    
 
     public function team(string $id){
 
@@ -31,6 +32,7 @@ class TeamController extends AppController{
         $team = $this->teamRepository->getTeam($int);
         return $this->render("team", ['team' => $team]);
     }
+
 
 
     public function addteam(){
@@ -55,9 +57,22 @@ class TeamController extends AppController{
 
 
 
-    public function deleteteam(){
-        $teams = $this->teamRepository->getTeams();
-        return $this->render("all-teams", ['teams' => $teams]);
+    public function deleteteam(int $teamId){
+        $url = "http://$_SERVER[HTTP_HOST]";
+
+        if (!$this->isPost()) {
+            header("Location: {$url}/myteams");
+        }
+
+        session_start();
+        $userId = $_SESSION['userId'];
+
+        if(is_numeric($teamId) ){
+            $id = (int)$teamId;
+            $this->teamRepository->deleteTeam($id,$userId);
+        }
+
+        header("Location: {$url}/myteams");
     }
 
 

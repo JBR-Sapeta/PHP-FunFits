@@ -131,7 +131,9 @@
 
                 <div class="team__actions">
                   <a id="<?= $team->getId() ?>" class="team__button">Edit</a>
-                  <a id="<?= $team->getId() ?>" class="team__button team__button--red">Delete</a>
+                  <form method="POST" action ="/deleteteam/<?= $team->getId() ?>">
+                    <button type="submit" class="team__button team__button--red">Delete</button>
+                  </form>
                 </div>
 
             </article>

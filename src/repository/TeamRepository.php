@@ -5,8 +5,7 @@ require_once __DIR__.'/../models/Team.php';
 
 class TeamRepository extends Repository{
 
-    public function addTeam( Team $team): void
-    {
+    public function addTeam( Team $team): void{
 
         $stmt = $this->database->connect()->prepare('
             INSERT INTO teams (owner_id, title, city, game, description, image)
@@ -22,6 +21,17 @@ class TeamRepository extends Repository{
             $team->getImage(),
         ]);
     }
+
+    public function deleteTeam( int $teamId, int $userId){
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT   delete_team( :teamid , :userid )
+        ');
+        $stmt->bindParam(':teamid', $teamId, PDO::PARAM_INT);
+        $stmt->bindParam(':userid', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
 
 
 
