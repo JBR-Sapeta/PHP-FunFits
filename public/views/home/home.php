@@ -2,7 +2,7 @@
   session_start();
   if(isset($_SESSION['userId'])){
     $url = "http://$_SERVER[HTTP_HOST]";
-    header("Location: {$url}/allteams");
+    header("Location: {$url}/searchteams");
   }
 ?>
 
@@ -15,16 +15,16 @@
     href="https://fonts.googleapis.com/css2?family=Iceland&family=Roboto:wght@400;500&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" type="text/css" href="public/css/index.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/home.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/layout/navigation.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/layout/main.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/layout/sidebar.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/home.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/home.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/layout/navigation.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/home/home.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="public/js/ui-sidebar.js"defer></script>
-  <script type="text/javascript" src="public/js/home.js"defer></script>
+  <script type="text/javascript" src="/public/js/ui-sidebar.js"defer></script>
+  <script type="text/javascript" src="/public/js/home.js"defer></script>
 
 </head>
 
@@ -73,42 +73,42 @@
         </div>
         <div class="hero__element-3">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero3.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero3.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-4">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero4.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero4.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-5">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero5.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero5.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-6">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero6.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero6.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-7">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero7.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero7.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-8">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero8.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero8.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-9">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero9.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero9.jpg" alt="" />
           </picture>
         </div>
         <div class="hero__element-10">
           <picture class="hero__picture">
-            <img class="hero__img" src="public/img/hero/hero10.jpg" alt="" />
+            <img class="hero__img" src="/public/img/hero/hero10.jpg" alt="" />
           </picture>
         </div>
       </section>
@@ -157,7 +157,7 @@
           <picture class="feature__picture feature__picture--right">
             <img
               class="feature__img"
-              src="public/img/feature/feature1.jpg"
+              src="/public/img/feature/feature1.jpg"
               alt=""
             />
           </picture>
@@ -180,7 +180,7 @@
           <picture class="feature__picture feature__picture--left">
             <img
               class="feature__img"
-              src="public/img/feature/feature2.jpg"
+              src="/public/img/feature/feature2.jpg"
               alt=""
             />
           </picture>
@@ -203,7 +203,7 @@
           <picture class="feature__picture feature__picture--right">
             <img
               class="feature__img"
-              src="public/img/feature/feature3.jpg"
+              src="/public/img/feature/feature3.jpg"
               alt=""
             />
           </picture>

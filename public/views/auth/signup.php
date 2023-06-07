@@ -2,7 +2,7 @@
   session_start();
   // if(isset($_SESSION['userId'])){
   //   $url = "http://$_SERVER[HTTP_HOST]";
-  //   header("Location: {$url}/allTeams");
+  //   header("Location: {$url}/searchteams");
   // }
 ?>
 
@@ -20,7 +20,7 @@
   <link rel="stylesheet" type="text/css" href="public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="public/css/signup.css" />
+  <link rel="stylesheet" type="text/css" href="public/css/auth/signup.css" />
 
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="public/js/ui-sidebar.js"defer></script>

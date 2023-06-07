@@ -14,8 +14,8 @@
         </div>
         <?php else : ?>
           <div class="footer__navigation">
-          <a href="/allteams" class="footer__link hover-animation"> Profile </a>
-          <a href="/allteams" class="footer__link hover-animation"> Search </a>
+          <a href="/profile" class="footer__link hover-animation"> Profile </a>
+          <a href="/searchteams" class="footer__link hover-animation"> Search </a>
           <a href="/addteam" class="footer__link hover-animation"> Teams </a>
 
         </div>

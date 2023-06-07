@@ -1,5 +1,5 @@
 .auth-form--signin {
-  background-image: url('../img/auth/singup.jpg');
+  background-image: url('/public/img/auth/singin.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -57,7 +57,7 @@
 }
 
 .auth-form__container--signin {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .auth-form__container {
@@ -87,10 +87,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  gap: var(--space-25);
 }
 
 .auth-form__form--center {
-  margin-top: var(--space-40);
+  margin-top: var(--space-70);
 }
 
 .auth-form__info {
@@ -102,18 +103,15 @@
 }
 
 .auth-form__actions {
-  margin-top: var(--space-10);
+  margin-top: var(--space-20);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.auth-form__actions--100 {
-  margin-top: var(--space-100);
-}
-
 .auth-form__messages {
+  margin-top: var(--space-30);
   width: 100%;
   display: flex;
   align-items: center;
@@ -123,6 +121,11 @@
 .auth-form__message--error {
   font-size: var(--font-size-14);
   color: var(--color-red-light);
+}
+
+.auth-form__message--succes{
+  font-size: var(--font-size-14);
+  color: var(--color-primary-light);
 }
 
 .auth-form__button {
@@ -159,7 +162,7 @@
 /*  ------------------ INPUT -------------------- */
 
 .base-input__container {
-  width: 260px;
+  width: 235px;
   display: flex;
   flex-direction: column;
 }
@@ -206,6 +209,7 @@
 .base-input__input::placeholder {
   color: var(--color-gray-100);
 }
+
 .validation-error {
   display: block;
   min-height: 20px;

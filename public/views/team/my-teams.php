@@ -22,12 +22,10 @@
   />
   <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/navigation.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/layout/navigation.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/team.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/team/my-teams.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
 
@@ -48,7 +46,7 @@
             <picture class="sidenav__avatar">
               <img
                 class="sidenav__img"
-                src="/public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
+                src="public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
                 alt="User avatar"
               />
             </picture>
@@ -62,7 +60,7 @@
               </a>
             </li>
             <li class="menu__button" >
-              <a class="menu__link" href="/allteams">
+              <a class="menu__link" href="/searchteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
@@ -92,10 +90,44 @@
     </div>
 
     <div class="main__page">
-      <section class="team">
-       <?php if($team) : ?>
-          
-            <article class="team__item">
+      <section class="teams">
+
+      
+
+        <nav class="teams__actions">
+          <ul class="teams__ul">
+            <li>
+              <a  class="teams__link teams__link--border teams__link--active" href="/myteams">
+                <i class="fa-solid fa-user-shield teams__icon--nav"></i>
+                Owner
+              </a>
+            </li>
+            <li>
+              <a  class="teams__link teams__link--border" href="/">
+              <i class="fa-solid fa-user teams__icon--nav"></i>
+                Member
+              </a>
+            </li>
+            <li>
+              <a class="teams__link" href="/addteam">
+                <i class="fa-solid fa-plus teams__icon--nav"></i>
+                Create team
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+ 
+       <div class="teams__header">
+          <h2>
+            My Teams
+          </h2>
+       </div>
+       <ul class="teams__list">
+       <?php if(count($teams)) : ?>
+        <?php foreach($teams as $team):?>
+            <li>
+              <article class="team__item">
                 <div class="team__name">
                   <h3><?= $team->getTitle() ?></h3>
                 </div>
@@ -116,7 +148,7 @@
                 </div>
 
                 <picture class="team__picture"> 
-                  <img class="team__img" src="/public/uploads/<?= $team->getImage() ?>" alt="Team">
+                  <img class="team__img" src="public/uploads/<?= $team->getImage() ?>" alt="Team">
                 </picture>
                 
                 <div class="team__description">
@@ -130,25 +162,18 @@
                 </div>
 
                 <div class="team__actions">
-                  <a id="<?= $team->getId() ?>" class="team__button">Join</a>
-                  <a id="<?= $team->getId() ?>" class="team__button team__button--green">Compete</a>
+                  <a class="team__button" href="/menageteam/<?= $team->getId() ?>" >Menage</a>
                 </div>
 
-            </article>
-    
-
-        <?php else : ?>
-            <div class="not-found">
-              <h3 class="not-found__header">Team with given ID does not exist.</h3>
-              <div class="not-found__mmesage ">
-                <picture class="not-found__picture">
-                    <img class="not-found__img" src="/public/img/not_found.png" alt="Good bye!">
-                </picture>
-              </div>
-             <a class="not-found__link" href="/allteams"> Search</a>
-            </div>
-        <?php endif; ?>
-
+              </article>
+            </li>
+            <?php endforeach; ?>
+          <?php else : ?>
+            <li>
+              <h3>You do not own any team.</h3>
+            </li>
+          <?php endif; ?>
+       </ul>
       
       </section>
     </div>

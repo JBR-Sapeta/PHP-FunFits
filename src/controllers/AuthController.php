@@ -18,18 +18,14 @@ class AuthController extends AppController{
         $this->userRepository = new UserRepository();
     }
 
-    
-
     public function signup(){
-        $this->render("signup");
+        $this->render("auth/signup");
     }
-
-
 
     public function register(){
         
         if (!$this->isPost()) {
-            return $this->render('signup');
+            return $this->render('auth/signup');
         }
 
         $username = $_POST['username'];
@@ -39,31 +35,31 @@ class AuthController extends AppController{
 
 
         if (!strlen($username)) {
-            return $this->render('signup', ['errors' => ['Username cannot be empty.']]);
-        }
-
-        if (!strlen($password)) {
-            return $this->render('signup', ['errors' => ['Password must be at least 6 characters long.']]);
+            return $this->render('auth/signup', ['errors' => ['Username cannot be empty.']]);
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $this->render('signup', ['errors' => ['Invalid email address.']]);
+            return $this->render('auth/ignup', ['errors' => ['Invalid email address.']]);
+        }
+
+        if (!strlen($password)) {
+            return $this->render('auth/signup', ['errors' => ['Password must be at least 6 characters long.']]);
         }
 
         if ($password !== $confirmedPassword) {
-            return $this->render('signup', ['errors' => ['Please provide proper password.']]);
+            return $this->render('auth/signup', ['errors' => ['Please provide proper password.']]);
         }
 
         $user =  $this->userRepository->isEmailTaken($email);
 
         if($user){
-            return $this->render('signup', ['errors' => ['Email in use.']]);
+            return $this->render('auth/signup', ['errors' => ['Email in use.']]);
         }
 
         $user =  $this->userRepository->isUsernameTaken($username);
 
         if($user){
-            return $this->render('signup', ['errors' => ['Username in use.']]);
+            return $this->render('auth/signup', ['errors' => ['Username in use.']]);
         }
 
         $hashedUser = password_hash($password, PASSWORD_DEFAULT);
@@ -71,43 +67,39 @@ class AuthController extends AppController{
       
         $this->userRepository->addUser($user);
       
-        return $this->render('signin', ['messages' => ['You\'ve been succesfully registrated!']]);
+        return $this->render('auth/signin', ['messages' => ['You\'ve been succesfully registrated!']]);
 
     }
-
-
 
     public function signin(){
-        $this->render("signin");
+        $this->render("auth/signin");
     }
-
-
 
     public function login(){
 
         if (!$this->isPost()) {
-            return $this->render('signin');
+            return $this->render('auth/signin');
         }
 
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return $this->render('signup', ['errors' => ['Invalid email address.']]);
+            return $this->render('auth/signin', ['errors' => ['Invalid email address.']]);
         }
 
         $user =  $this->userRepository->getUserByEmail($email);
 
         if(!$user){
-            return $this->render('signin', ['errors' => ['User does not exist.']]);
+            return $this->render('auth/signin', ['errors' => ['User does not exist.']]);
         }
 
         if ($user->getEmail() !== $email) {
-            return $this->render('signin', ['errors' => ['User with this email not exist.']]);
+            return $this->render('auth/signin', ['errors' => ['User with this email not exist.']]);
         }
 
         if (!password_verify($password, $user->getPassword())) {
-            return $this->render('signin', ['errors' => ['Wrong password.']]);
+            return $this->render('auth/signin', ['errors' => ['Wrong password.']]);
         }
 
         session_start();
@@ -117,14 +109,14 @@ class AuthController extends AppController{
   
 
         $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/allteams");
+        header("Location: {$url}/searchteams");
     }
 
     
 
 
     public function logout(){
-        $this->render("logout");
+        $this->render("auth/logout");
     }
   
 
@@ -132,12 +124,12 @@ class AuthController extends AppController{
         session_start();
         $id = $_SESSION['userId'];
         $user =  $this->userRepository->getUserById($id);
-        $this->render("profile", ['user' => $user]);
+        $this->render("auth/profile", ['user' => $user]);
     }
 
 
     public function userform(){
-        $this->render("userform");
+        $this->render("auth/userform");
     }
 
     public function userupdate(){
@@ -150,26 +142,26 @@ class AuthController extends AppController{
             
             if (!strlen($name)) {
                 $this->message[] = 'Name to short.';
-                return $this->render("userform",  ['messages' => $this->message]);
+                return $this->render("auth/userform",  ['messages' => $this->message]);
             }
 
             if (!strlen($surname)) {
                 $this->message[] = 'Surname to short.';
-                return $this->render("userform",  ['messages' => $this->message]);
+                return $this->render("auth/userform",  ['messages' => $this->message]);
             }
 
             if (!strlen($phone)) {
                 $this->message[] = 'Enter phone number.';
-                return $this->render("userform",  ['messages' => $this->message]);
+                return $this->render("auth/userform",  ['messages' => $this->message]);
             }
 
             if(!is_uploaded_file($_FILES['file']['tmp_name'])){
                 $this->message[] = 'Please add your avatar.';
-                return $this->render("userform",  ['messages' => $this->message]);
+                return $this->render("auth/userform",  ['messages' => $this->message]);
             }
 
             if(!$this->validate($_FILES['file'])){
-                return $this->render("userform",  ['messages' => $this->message]);
+                return $this->render("auth/userform",  ['messages' => $this->message]);
             }
             
             move_uploaded_file(
@@ -188,7 +180,7 @@ class AuthController extends AppController{
             header("Location: {$url}/profile");
         }
 
-        return $this->render("userform");
+        return $this->render("auth/userform");
     }
 
 

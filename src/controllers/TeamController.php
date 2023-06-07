@@ -19,8 +19,6 @@ class TeamController extends AppController{
         $this->teamRepository = new TeamRepository();
     }
     
-
-
     public function addteam(){
         if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
@@ -37,10 +35,8 @@ class TeamController extends AppController{
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/myteams");
         }
-        return $this->render("add-team",  ['messages' => $this->message]);
+        return $this->render("team/add-team",  ['messages' => $this->message]);
     }
-
-
 
     public function deleteteam(int $teamId){
         $url = "http://$_SERVER[HTTP_HOST]";
@@ -59,51 +55,41 @@ class TeamController extends AppController{
         header("Location: {$url}/myteams");
     }
 
-
-
     public function team(string $id){
 
         if(!is_numeric($id) ){
-            return $this->render("team", ['team' => null]);
+            return $this->render("team/team", ['team' => null]);
         }
 
         $int = (int)$id;
 
         $team = $this->teamRepository->getTeam($int);
-        return $this->render("team", ['team' => $team]);
+        return $this->render("team/team", ['team' => $team]);
     }
-
-
 
     public function menageteam(string $id){
 
         if(!is_numeric($id) ){
-            return $this->render("menage-team", ['team' => null]);
+            return $this->render("team/menage-team", ['team' => null]);
         }
 
         $int = (int)$id;
 
         $team = $this->teamRepository->getTeam($int);
-        return $this->render("menage-team", ['team' => $team]);
+        return $this->render("team/menage-team", ['team' => $team]);
     }
-
-
 
     public function myteams(){
         session_start();
         $id = $_SESSION['userId'];
         $teams = $this->teamRepository->getTeamsForOwner($id);
-        return $this->render("my-teams", ['teams' => $teams]);
+        return $this->render("team/my-teams", ['teams' => $teams]);
     }
 
-
-
-    public function allteams(){
+    public function searchteams(){
         $teams = $this->teamRepository->getTeams();
-        return $this->render("all-teams", ['teams' => $teams]);
+        return $this->render("team/search-teams", ['teams' => $teams]);
     }
-
-
 
     public function search(){
         $contentType  = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) :"";
@@ -118,8 +104,6 @@ class TeamController extends AppController{
         }
     }
     
-
-
     private function validate(array $file): bool{
 
         if ($file['size'] > self::MAX_FILE_SIZE) {

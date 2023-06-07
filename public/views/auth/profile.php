@@ -27,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/profile.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/auth/profile.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
 
@@ -63,7 +63,7 @@
               </a>
             </li>
             <li class="menu__button" >
-              <a class="menu__link" href="/allteams">
+              <a class="menu__link" href="/searchteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >

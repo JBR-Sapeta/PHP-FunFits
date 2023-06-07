@@ -27,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/userform.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/team/menage-team.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
 
@@ -55,20 +55,20 @@
           </div>
 
           <ul class="sidenav__menu">
-            <li class="menu__button active">
+            <li class="menu__button ">
               <a class="menu__link" href="/profile">
                 <i class="fa-solid fa-user"></i>
                 Profile
               </a>
             </li>
             <li class="menu__button" >
-              <a class="menu__link" href="/allteams">
+              <a class="menu__link" href="/searchteams">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 Search</a
               >
             </li>
 
-            <li class="menu__button ">
+            <li class="menu__button active">
               <a class="menu__link" href="/myteams">
                 <i class="fa-solid fa-users"></i>
                 Teams</a
@@ -92,71 +92,66 @@
     </div>
 
     <div class="main__page">
-
-        <section >
-
-            <form class="userform" action="userupdate" method="POST" ENCTYPE="multipart/form-data">
-
-                <h2 class="userform__header">Update Account</h2>
-
-                <div class="base-input__container">
-                    <i class="fa-solid fa-user base-input__icon"></i>
-                    <input
-                    name="name"
-                    class="base-input__input"
-                    type="text"
-                    placeholder="Name"
-                    maxlength="32"
-                    />
+      <section class="team">
+       <?php if($team) : ?>
+          
+            <article class="team__item">
+                <div class="team__name">
+                  <h3><?= $team->getTitle() ?></h3>
                 </div>
 
-                <div class="base-input__container">
-                    <i class="fa-solid fa-user base-input__icon"></i>
-                    <input
-                    name="surname"
-                    class="base-input__input"
-                    type="text"
-                    placeholder="Surname"
-                    maxlength="32"
-                    />
-                </div>
-
-                <div class="base-input__container">
-                    <i class="fa-solid fa-phone base-input__icon"></i>
-                    <input
-                    name="phone"
-                    class="base-input__input"
-                    type="text"
-                    placeholder="Phone"
-                    pattern="[0-9]+"
-                    maxlength="12"
-                    />
-                </div>
-
-                <div class="base-file__container">
-                <label> 
-                    <i class="fa-regular fa-image base-file__icon "></i>
-                    Add your avatar.
-                </label>
-                <input type="file" name="file" class="base-file__input" /><br/>
-                </div>
-
-                <div class="userform__actions">
-                <div class="userform__messages">
-                  <p>
-                  <?php if(isset($messages)){
-                    foreach($messages as $message){
-                      echo $message;
-                    }
-                  }
-                  ?>
+                <div class="team__info">
+                  <p class="team__data">
+                    <i class="fa-solid fa-basketball team__icon"></i>  
+                    <?= $team->getGame() ?>
+                  </p>
+                  <p class="team__data">
+                    <i class="fa-sharp fa-solid fa-city team__icon"></i>
+                    <?= $team->getCity() ?>
+                  </p>
+                  <p class="team__data"> 
+                    <i class="fa-solid fa-users team__icon"></i>
+                    <?= $team->getMembers() ?>
                   </p>
                 </div>
-                <button class="userform__button" type="submit">Update</button>
+
+                <picture class="team__picture"> 
+                  <img class="team__img" src="/public/uploads/<?= $team->getImage() ?>" alt="Team">
+                </picture>
+                
+                <div class="team__description">
+                  <p class="team__about">
+                  <i class="fa-solid fa-circle-info team__icon"></i>
+                    About us:
+                  </p>
+                  <p class="team__text">
+                  <?= $team->getDescription() ?>
+                  </p>
+                </div>
+
+                <div class="team__actions">
+                  <form method="POST" action ="/deleteteam/<?= $team->getId() ?>">
+                    <button type="submit" class="team__button team__button--red">Delete</button>
+                  </form>
+                </div>
+
+            </article>
+    
+
+        <?php else : ?>
+            <div class="not-found">
+              <h3 class="not-found__header">Team with given ID does not exist.</h3>
+              <div class="not-found__mmesage ">
+                <picture class="not-found__picture">
+                    <img class="not-found__img" src="/public/img/not_found.png" alt="Good bye!">
+                </picture>
               </div>
-                    
-            </form>
-        </section>
+             <a class="not-found__link" href="/searchteams"> Search</a>
+            </div>
+        <?php endif; ?>
+      </section>
+
+
 
     </div>
   </main>
