@@ -19,6 +19,49 @@ class UserRepository extends Repository{
     }
 
 
+
+    public function updateUser( int $id, string $name, string $surname, string $phone, string $avatar ){
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users SET name = :name , surname = :surname , phone = :phone , avatar = :avatar  WHERE id = :id
+        ');
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':surname', $surname, PDO::PARAM_STR);
+        $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);
+        $stmt->bindParam(':avatar', $avatar, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+       
+    }
+
+    public function getUserById (int $id): ?User{
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM users WHERE id = :id
+        ');
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user == false) {
+            //Add Exception
+            return null;
+        }
+
+        return new User(
+            $user['email'],
+            $user['password'],
+            $user['username'],
+            $user['name'],
+            $user['surname'],
+            $user['avatar'],
+            $user['phone'],
+            $user['id']
+        );
+    }
+
+
+
     public function getUserByEmail (string $email): ?User{
 
         $stmt = $this->database->connect()->prepare('
@@ -47,6 +90,7 @@ class UserRepository extends Repository{
     }
 
 
+
     public function isEmailTaken (string $email): bool{
 
         $stmt = $this->database->connect()->prepare('
@@ -63,6 +107,7 @@ class UserRepository extends Repository{
 
         return  true;
     }
+
 
 
     public function isUsernameTaken (string $username): bool{

@@ -27,7 +27,7 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/profile.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/userform.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
 
@@ -58,7 +58,6 @@
             <li class="menu__button active">
               <a class="menu__link" href="/profile">
                 <i class="fa-solid fa-user"></i>
-
                 Profile
               </a>
             </li>
@@ -94,46 +93,70 @@
 
     <div class="main__page">
 
-      
+        <section >
 
-        <?php if($user) : ?>
-          <section class="profile">
+            <form class="userform" action="userupdate" method="POST" ENCTYPE="multipart/form-data">
 
-            <div class="profile__container">
-              <h3 class="profile__header"><?= $user->getUsername() ?></h3>
-              <picture class="profile__avatar">
-                <img
-                  class="profile__img"
-                  src="/public/uploads/avatars/<?= $user->getAvatar() ?>"
-                  alt="User avatar"
-                />
-              </picture>
+                <h2 class="userform__header">Update Account</h2>
 
-              <div class="profile__data">
-                <p>
-                  <i class="fa-solid fa-user profile__icon"></i>
-                  Name: <span><?= $user->getName() ?></span>
-                </p>
-                <p>
-                  <i class="fa-solid fa-user profile__icon"></i>
-                  Surname: <span><?= $user->getSurname() ?></span>
-                </p>
-                <p>
-                  <i class="fa-solid fa-envelope profile__icon"></i>
-                  Email:<span> <?= $user->getEmail() ?></span>
-                </p>
-                <p>
-                  <i class="fa-solid fa-phone profile__icon"></i>
-                  Phone: <span><?= $user->getPhone() ?></span>
-                </p>
+                <div class="base-input__container">
+                    <i class="fa-solid fa-user base-input__icon"></i>
+                    <input
+                    name="name"
+                    class="base-input__input"
+                    type="text"
+                    placeholder="Name"
+                    maxlength="32"
+                    />
+                </div>
+
+                <div class="base-input__container">
+                    <i class="fa-solid fa-user base-input__icon"></i>
+                    <input
+                    name="surname"
+                    class="base-input__input"
+                    type="text"
+                    placeholder="Surname"
+                    maxlength="32"
+                    />
+                </div>
+
+                <div class="base-input__container">
+                    <i class="fa-solid fa-phone base-input__icon"></i>
+                    <input
+                    name="phone"
+                    class="base-input__input"
+                    type="text"
+                    placeholder="Phone"
+                    pattern="[0-9]+"
+                    maxlength="12"
+                    />
+                </div>
+
+                <div class="base-file__container">
+                <label> 
+                    <i class="fa-regular fa-image base-file__icon "></i>
+                    Add your avatar.
+                </label>
+                <input type="file" name="file" class="base-file__input" /><br/>
+                </div>
+
+                <div class="userform__actions">
+                <div class="userform__messages">
+                  <p>
+                  <?php if(isset($messages)){
+                    foreach($messages as $message){
+                      echo $message;
+                    }
+                  }
+                  ?>
+                  </p>
+                </div>
+                <button class="userform__button" type="submit">Update</button>
               </div>
-            </div>
-            <a href="/userform" class="profile__button" >Edit</a>
-          </section>
-        <?php else : ?>
-          <h3 class="profile__header">Oops, something went wrong...</h3>
-        <?php endif; ?>
-
+                    
+            </form>
+        </section>
 
     </div>
   </main>

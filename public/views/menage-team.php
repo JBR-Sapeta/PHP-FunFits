@@ -56,7 +56,7 @@
 
           <ul class="sidenav__menu">
             <li class="menu__button ">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/profile">
                 <i class="fa-solid fa-user"></i>
                 Profile
               </a>
@@ -130,7 +130,6 @@
                 </div>
 
                 <div class="team__actions">
-                  <a id="<?= $team->getId() ?>" class="team__button">Edit</a>
                   <form method="POST" action ="/deleteteam/<?= $team->getId() ?>">
                     <button type="submit" class="team__button team__button--red">Delete</button>
                   </form>

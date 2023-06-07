@@ -19,20 +19,6 @@ class TeamController extends AppController{
         $this->teamRepository = new TeamRepository();
     }
     
-    
-
-    public function team(string $id){
-
-        if(!is_numeric($id) ){
-            return $this->render("team", ['team' => null]);
-        }
-
-        $int = (int)$id;
-
-        $team = $this->teamRepository->getTeam($int);
-        return $this->render("team", ['team' => $team]);
-    }
-
 
 
     public function addteam(){
@@ -51,7 +37,6 @@ class TeamController extends AppController{
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/myteams");
         }
-
         return $this->render("add-team",  ['messages' => $this->message]);
     }
 
@@ -71,8 +56,21 @@ class TeamController extends AppController{
             $id = (int)$teamId;
             $this->teamRepository->deleteTeam($id,$userId);
         }
-
         header("Location: {$url}/myteams");
+    }
+
+
+
+    public function team(string $id){
+
+        if(!is_numeric($id) ){
+            return $this->render("team", ['team' => null]);
+        }
+
+        $int = (int)$id;
+
+        $team = $this->teamRepository->getTeam($int);
+        return $this->render("team", ['team' => $team]);
     }
 
 
@@ -116,7 +114,6 @@ class TeamController extends AppController{
 
             header('Content-Type: application/json');
             http_response_code(200);
-
             echo json_encode($this->teamRepository->searchTeam( $decoded['title'], $decoded['city'], $decoded['game']));
         }
     }

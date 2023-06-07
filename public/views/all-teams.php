@@ -53,7 +53,7 @@
 
           <ul class="sidenav__menu">
             <li class="menu__button ">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/profile">
                 <i class="fa-solid fa-user"></i>
                 Profile
               </a>

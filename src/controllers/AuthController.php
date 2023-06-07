@@ -6,6 +6,11 @@ require_once __DIR__.'/../repository/UserRepository.php';
 
 class AuthController extends AppController{
 
+    const MAX_FILE_SIZE = 1024*1024;
+    const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
+    const UPLOAD_DIRECTORY = '/../public/uploads/avatars/';
+
+    private $messages = []; 
     private $userRepository;
 
     public function __construct(){
@@ -13,10 +18,13 @@ class AuthController extends AppController{
         $this->userRepository = new UserRepository();
     }
 
+    
 
     public function signup(){
         $this->render("signup");
     }
+
+
 
     public function register(){
         
@@ -74,6 +82,7 @@ class AuthController extends AppController{
     }
 
 
+
     public function login(){
 
         if (!$this->isPost()) {
@@ -112,10 +121,90 @@ class AuthController extends AppController{
     }
 
     
-    
+
+
     public function logout(){
         $this->render("logout");
     }
   
+
+    public function profile(){
+        session_start();
+        $id = $_SESSION['userId'];
+        $user =  $this->userRepository->getUserById($id);
+        $this->render("profile", ['user' => $user]);
+    }
+
+
+    public function userform(){
+        $this->render("userform");
+    }
+
+    public function userupdate(){
+
+        if ($this->isPost()) {
+            
+            $name = $_POST['name'];
+            $surname = $_POST['surname'];
+            $phone = $_POST['phone'];
+            
+            if (!strlen($name)) {
+                $this->message[] = 'Name to short.';
+                return $this->render("userform",  ['messages' => $this->message]);
+            }
+
+            if (!strlen($surname)) {
+                $this->message[] = 'Surname to short.';
+                return $this->render("userform",  ['messages' => $this->message]);
+            }
+
+            if (!strlen($phone)) {
+                $this->message[] = 'Enter phone number.';
+                return $this->render("userform",  ['messages' => $this->message]);
+            }
+
+            if(!is_uploaded_file($_FILES['file']['tmp_name'])){
+                $this->message[] = 'Please add your avatar.';
+                return $this->render("userform",  ['messages' => $this->message]);
+            }
+
+            if(!$this->validate($_FILES['file'])){
+                return $this->render("userform",  ['messages' => $this->message]);
+            }
+            
+            move_uploaded_file(
+                $_FILES['file']['tmp_name'], 
+                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
+            );
+            
+      
+            session_start();
+            $id = $_SESSION['userId'];    
+            $_SESSION['avatar'] = $_FILES['file']['name']; 
+
+            $this->userRepository->updateUser($id, $name, $surname, $phone, $_FILES['file']['name']  );
+
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/profile");
+        }
+
+        return $this->render("userform");
+    }
+
+
+
+    private function validate(array $file): bool{
+
+        if ($file['size'] > self::MAX_FILE_SIZE) {
+            $this->message[] = 'File is too large for destination file system.';
+            return false;
+        }
+
+        if (!isset($file['type']) || !in_array($file['type'], self::SUPPORTED_TYPES)) {
+            $this->message[] = 'File type is not supported.';
+            return false;
+        }
+        return true;
+    }
 
 }

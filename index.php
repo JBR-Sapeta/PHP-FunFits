@@ -12,6 +12,9 @@ Routing::get('signup','AuthController');
 Routing::post('logout','AuthController');
 Routing::post('login','AuthController');
 Routing::post('register','AuthController');
+Routing::get('profile','AuthController');
+Routing::get('userform','AuthController');
+Routing::post('userupdate','AuthController');
 
 Routing::post('addteam','TeamController');
 Routing::get('myteams','TeamController');
