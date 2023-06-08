@@ -25,5 +25,13 @@ Routing::get('menageteam','TeamController');
 Routing::post('deleteteam','TeamController');
 
 
+Routing::post('createinvitation','InvitationController');
+Routing::post('deleteinvitation','InvitationController');
+Routing::post('acceptinvitation','InvitationController');
+Routing::post('rejectinvitation','InvitationController');
+Routing::get('userinvitations','TeamInvitationController');
+Routing::get('getuserinvitations','TeamInvitationController');
+Routing::get('teaminvitations','UserInvitationController');
+Routing::get('getteaminvitations','UserInvitationController');
 
 Routing::run($path);

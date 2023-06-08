@@ -80,6 +80,12 @@
               >
             </li>
             <li class="menu__button">
+              <a class="menu__link" href="/userinvitations">
+              <i class="fa-solid fa-envelope"></i>
+                Invitations</a
+              >
+            </li>
+            <li class="menu__button">
               <a class="menu__link" href="/logout">
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
                 Logout</a
@@ -129,7 +135,11 @@
                 </div>
 
                 <div class="team__actions">
-                  <a id="<?= $team->getId() ?>" class="team__button">Join</a>
+                  <form class="invitation__action" action="/createinvitation/<?= $team->getId() ?>">
+                    <button type="submit" class="team__button">Join</button>
+                 </form>
+
+
                   <a id="<?= $team->getId() ?>" class="team__button team__button--green">Compete</a>
                 </div>
 

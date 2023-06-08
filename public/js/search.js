@@ -17,28 +17,9 @@ titleInput.addEventListener('keyup', function (event) {
       game: gameInput.value,
     };
 
-    fetch('/search', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (teams) {
-        if (!teams.length) {
-          notFoundContainer.classList.add('no-results--show');
-        } else {
-          notFoundContainer.classList.remove('no-results--show');
-        }
-        teamsContainer.innerHTML = '';
-        renderTeams(teams);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    
+    
+    
   }
 });
 

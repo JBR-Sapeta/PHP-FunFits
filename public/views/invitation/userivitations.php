@@ -9,7 +9,6 @@
 
 <!DOCTYPE html>
 <head>
-
   <script
     src="https://kit.fontawesome.com/46d253cbeb.js"
     crossorigin="anonymous"
@@ -28,9 +27,10 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/auth/userform.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/invitation/userinvitations.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
+  <script type="text/javascript" src="/public/js/userinvitations.js" defer></script>
 
 </head>
 
@@ -55,9 +55,10 @@
           </div>
 
           <ul class="sidenav__menu">
-            <li class="menu__button active">
+            <li class="menu__button ">
               <a class="menu__link" href="/profile">
                 <i class="fa-solid fa-user"></i>
+
                 Profile
               </a>
             </li>
@@ -80,7 +81,7 @@
                 Compet</a
               >
             </li>
-            <li class="menu__button">
+            <li class="menu__button active">
               <a class="menu__link" href="/userinvitations">
               <i class="fa-solid fa-envelope"></i>
                 Invitations</a
@@ -99,70 +100,30 @@
 
     <div class="main__page">
 
-        <section >
+    
 
-            <form class="userform" action="userupdate" method="POST" ENCTYPE="multipart/form-data">
-
-                <h2 class="userform__header">Update Account</h2>
-
-                <div class="base-input__container">
-                    <i class="fa-solid fa-user base-input__icon"></i>
-                    <input
-                    name="name"
-                    class="base-input__input"
-                    type="text"
-                    placeholder="Name"
-                    maxlength="32"
-                    />
-                </div>
-
-                <div class="base-input__container">
-                    <i class="fa-solid fa-user base-input__icon"></i>
-                    <input
-                    name="surname"
-                    class="base-input__input"
-                    type="text"
-                    placeholder="Surname"
-                    maxlength="32"
-                    />
-                </div>
-
-                <div class="base-input__container">
-                    <i class="fa-solid fa-phone base-input__icon"></i>
-                    <input
-                    name="phone"
-                    class="base-input__input"
-                    type="text"
-                    placeholder="Phone"
-                    pattern="[0-9]+"
-                    maxlength="12"
-                    />
-                </div>
-
-                <div class="base-file__container">
-                <label> 
-                    <i class="fa-regular fa-image base-file__icon "></i>
-                    Add your avatar.
-                </label>
-                <input type="file" name="file" class="base-file__input" /><br/>
-                </div>
-
-                <div class="userform__actions">
-                <div class="userform__messages">
-                  <p>
-                  <?php if(isset($messages)){
-                    foreach($messages as $message){
-                      echo $message;
-                    }
-                  }
-                  ?>
-                  </p>
-                </div>
-                <button class="userform__button" type="submit">Update</button>
-              </div>
-                    
-            </form>
+      
+        <div id="spinner" class="spinner">
+          <picture class="spinner__picture">
+            <img class="spinner__img" src="/public/img/loading.png" alt="Good bye!">
+            <div class="spinner__circle">
+              <div class="spinner__arrow border-gradient-purple "></div>
+            </div>
+          </picture>
+        </div>
+        
+        <div id="not-found" class="not-found">
+          <h3 class="not-found__header">You haven't send any request to join a team yet.</h3>
+          <picture class="not-found__picture">
+            <img class="not-found__img" src="/public/img/not_found.png" alt="Not Found!">
+          </picture>
+        </div>
+          
+        <section>
+          <ul id="invitations" class="invitations">
+          </ul>
         </section>
+
 
     </div>
   </main>

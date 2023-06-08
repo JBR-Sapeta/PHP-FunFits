@@ -76,6 +76,12 @@
               >
             </li>
             <li class="menu__button">
+              <a class="menu__link" href="/userinvitations">
+              <i class="fa-solid fa-envelope"></i>
+                Invitations</a
+              >
+            </li>
+            <li class="menu__button">
               <a class="menu__link" href="">
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
                 Logout</a

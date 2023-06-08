@@ -81,6 +81,12 @@
               >
             </li>
             <li class="menu__button">
+              <a class="menu__link" href="/userinvitations">
+              <i class="fa-solid fa-envelope"></i>
+                Invitations</a
+              >
+            </li>
+            <li class="menu__button">
               <a class="menu__link" href="/logout">
                 <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
                 Logout</a
@@ -130,6 +136,7 @@
                 </div>
 
                 <div class="team__actions">
+                    <a href="/teaminvitations/<?= $team->getId() ?>" class="team__button">Members</a>
                   <form method="POST" action ="/deleteteam/<?= $team->getId() ?>">
                     <button type="submit" class="team__button team__button--red">Delete</button>
                   </form>
