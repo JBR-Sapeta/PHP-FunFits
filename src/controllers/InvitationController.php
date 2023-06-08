@@ -63,4 +63,46 @@ class InvitationController extends AppController{
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/myteams");
     }
+
+    public function userinvitations(){
+        return $this->render("invitation/userivitations");
+    }
+
+    public function getuserinvitations(){
+        session_start();
+        $userId = $_SESSION['userId'];
+
+        if($userId){
+            $contentType  = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) :"";
+
+            if($contentType === "application/json"){
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode($this->invitationRepository->getUsersInvitations($userId));
+            }
+        }
+    }
+
+    public function teaminvitations(){
+        return $this->render("invitation/teaminvitations");
+    }
+
+    public function getteaminvitations(string $teamId){
+        session_start();
+        $userId = $_SESSION['userId'];
+
+        if($userId){
+       
+            $id = (int)$teamId;
+
+            $contentType  = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) :"";
+
+            if($contentType === "application/json"){
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode($this->invitationRepository->getTeamsInvitations($id, $userId));
+            }
+         }
+     
+    }
 }
