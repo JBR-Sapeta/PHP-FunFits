@@ -74,11 +74,11 @@ class GameController extends AppController{
         header("Location: {$url}/myteams");
     }
 
-    public function menagegames($id){
+    public function menagegames(){
         return $this->render("game/menagegames");
     }
 
-    public function getgames($id){
+    public function getteamgames($id){
         session_start();
         $userId = $_SESSION['userId'];
 
@@ -91,6 +91,28 @@ class GameController extends AppController{
                 header('Content-Type: application/json');
                 http_response_code(200);
                 echo json_encode($this->gameRepository->getTeamGames($teamId,$userId));
+            }
+        }
+        
+    }
+    
+    public function usergames(){
+        return $this->render("game/usergames");
+    }
+
+
+    public function getusergames(){
+        session_start();
+        $userId = $_SESSION['userId'];
+    
+        if($userId){
+            $contentType  = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) :"";
+
+
+            if($contentType === "application/json"){
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode($this->gameRepository->getUserGames($userId));
             }
         }
         

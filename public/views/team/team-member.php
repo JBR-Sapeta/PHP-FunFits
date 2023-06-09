@@ -22,14 +22,13 @@
   />
   <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/navigation.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/index.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/layout/navigation.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/team/chellenge.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/team/my-teams.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
+
 
 </head>
 
@@ -47,7 +46,7 @@
             <picture class="sidenav__avatar">
               <img
                 class="sidenav__img"
-                src="/public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
+                src="public/uploads/avatars/<?= $_SESSION['avatar'] ; ?>"
                 alt="User avatar"
               />
             </picture>
@@ -97,31 +96,65 @@
     </div>
 
     <div class="main__page">
-      <section class="team">
+      <section class="teams">
 
-        <?php if($opponent) : ?>
-            <article class="team__item">
+      
+
+        <nav class="teams__actions">
+          <ul class="teams__ul">
+            <li>
+              <a  class="teams__link teams__link--border teams__link--active" href="/myteams">
+                <i class="fa-solid fa-user-shield teams__icon--nav"></i>
+                Owner
+              </a>
+            </li>
+            <li>
+              <a  class="teams__link teams__link--border" href="/teammember">
+              <i class="fa-solid fa-user teams__icon--nav"></i>
+                Member
+              </a>
+            </li>
+            <li>
+              <a class="teams__link" href="/addteam">
+                <i class="fa-solid fa-plus teams__icon--nav"></i>
+                Create team
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+ 
+       <div class="teams__header">
+          <h2>
+            Member of
+          </h2>
+       </div>
+       <ul class="teams__list">
+       <?php if(count($teams)) : ?>
+        <?php foreach($teams as $team):?>
+            <li>
+              <article class="team__item">
                 <div class="team__name">
-                  <h3><?= $opponent->getTitle() ?></h3>
+                  <h3><?= $team->getTitle() ?></h3>
                 </div>
 
                 <div class="team__info">
                   <p class="team__data">
                     <i class="fa-solid fa-basketball team__icon"></i>  
-                    <?= $opponent->getGame() ?>
+                    <?= $team->getGame() ?>
                   </p>
                   <p class="team__data">
                     <i class="fa-sharp fa-solid fa-city team__icon"></i>
-                    <?= $opponent->getCity() ?>
+                    <?= $team->getCity() ?>
                   </p>
                   <p class="team__data"> 
                     <i class="fa-solid fa-users team__icon"></i>
-                    <?= $opponent->getMembers() ?>
+                    <?= $team->getMembers() ?>
                   </p>
                 </div>
 
                 <picture class="team__picture"> 
-                  <img class="team__img" src="/public/uploads/<?= $opponent->getImage() ?>" alt="Team">
+                  <img class="team__img" src="public/uploads/<?= $team->getImage() ?>" alt="Team">
                 </picture>
                 
                 <div class="team__description">
@@ -130,70 +163,20 @@
                     About us:
                   </p>
                   <p class="team__text">
-                  <?= $opponent->getDescription() ?>
+                  <?= $team->getDescription() ?>
                   </p>
                 </div>
 
-                <hr class="team__hr"/>
-
-                <?php if($teams) : ?>
-                <form class="team__form" method="POST" action="/creategame">
-                 
-                    <input
-                        name="opponentId"
-                        type="hidden"
-                        value="<?= $opponent->getId() ?>"
-                    />
-
-                    <div class="input__container">
-                        <label for="game">
-                        <i class="fa-sharp fa-solid fa-city input__icon"></i>
-                            Enter a place:
-                        </label>
-                        <input
-                            name="place"
-                            class="input__field"
-                            type="text"
-                            placeholder="Place"
-                            require
-                        />
-                    </div>
-
-                    <div class="input__container">
-                        <label for="team">
-                        <i class="fa-solid fa-users input__icon"></i>
-                        Choose a team:
-                        </label>
-                        <select name="hostId" id="team" class="input__select" require>
-                           
-                                <?php foreach($teams as $team):?>
-                                <option value="<?= $team->getId() ?>"><?= $team->getTitle() ?></option>
-                                <?php endforeach; ?>
-                            
-                        </select> 
-                    </div>
-
-                    <div class="input__container">
-                        <label for="date">
-                        <i class="fa-solid fa-calendar-days input__icon"></i>
-                        Choose a date:
-                        </label>
-                        <input id="gdate" name="game_date" class="input__field"  type="datetime-local" require>
-                    </div>
-
-                    <div class="form__button">
-                        <button type="submit" class="team__button team__button--green">Compete</button>
-                    </div>
-                </form>
-
-                <?php else : ?>                     
-                        <div class="message">
-                            <h3 class="message__header">You don't have any team that plays <?= strtolower($opponent->getGame()) ?>. </h3>
-                        </div>
-                <?php endif; ?>
-
-            </article>
-        <?php endif; ?>        
+              </article>
+            </li>
+            <?php endforeach; ?>
+          <?php else : ?>
+            <li>
+              <h3>You are not a member of any team.</h3>
+            </li>
+          <?php endif; ?>
+       </ul>
+      
       </section>
     </div>
   </main>

@@ -16,7 +16,7 @@
           <div class="footer__navigation">
           <a href="/profile" class="footer__link hover-animation"> Profile </a>
           <a href="/searchteams" class="footer__link hover-animation"> Search </a>
-          <a href="/addteam" class="footer__link hover-animation"> Teams </a>
+          <a href="/myteams" class="footer__link hover-animation"> Teams </a>
 
         </div>
         <?php endif; ?>

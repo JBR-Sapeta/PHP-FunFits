@@ -86,6 +86,14 @@ class TeamController extends AppController{
         return $this->render("team/my-teams", ['teams' => $teams]);
     }
 
+
+    public function teammember(){
+        session_start();
+        $id = $_SESSION['userId'];
+        $teams = $this->teamRepository->getTeamsForUser($id);
+        return $this->render("team/team-member", ['teams' => $teams]);
+    }
+
     public function searchteams(){
         $teams = $this->teamRepository->getTeams();
         return $this->render("team/search-teams", ['teams' => $teams]);

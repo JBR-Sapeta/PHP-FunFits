@@ -116,6 +116,34 @@ class TeamRepository extends Repository{
     }
 
 
+    public function getTeamsForUser(int  $userId): array
+    {
+        $result = [];
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM teams WHERE teams.id IN (SELECT team_id FROM users_teams WHERE user_id = :userId )
+        ');
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+        $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($teams as $team) {
+             $result[] = new Team(
+                $team['owner_id'],
+                $team['title'],
+                $team['city'],
+                $team['description'],
+                $team['game'],
+                $team['image'],
+                $team['members'],
+                $team['id']
+             );
+         }
+
+        return $result;
+    }
+
+
     public function getTeamsForChallenge(int $userId, string $game): array
     {
         $result = [];

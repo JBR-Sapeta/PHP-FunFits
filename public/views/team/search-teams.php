@@ -72,7 +72,7 @@
               >
             </li>
             <li class="menu__button">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/usergames">
                 <i class="fa-solid fa-circle-play"></i>
                 Compet</a
               >

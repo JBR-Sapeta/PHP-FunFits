@@ -18,6 +18,7 @@ Routing::post('userupdate','AuthController');
 
 Routing::post('addteam','TeamController');
 Routing::get('myteams','TeamController');
+Routing::get('teammember','TeamController');
 Routing::get('searchteams','TeamController');
 Routing::post('search','TeamController');
 Routing::get('team','TeamController');
@@ -38,7 +39,10 @@ Routing::post('creategame','GameController');
 Routing::post('acceptgame','GameController');
 Routing::post('rejectgame','GameController');
 Routing::post('deletegame','GameController');
-Routing::get('getgames','GameController');
 Routing::get('menagegames','GameController');
+Routing::get('getteamgames','GameController');
+Routing::get('usergames','GameController');
+Routing::get('getusergames','GameController');
+
 
 Routing::run($path);

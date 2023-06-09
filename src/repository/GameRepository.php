@@ -61,7 +61,17 @@ class GameRepository extends Repository{
 
         return  $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    public function getUserGames( int $userId):array{
 
+        $stmt = $this->database->connect()->prepare("
+        SELECT * FROM v_games_teams WHERE host_id IN(Select team_id FROM users_teams WHERE users_teams.user_id = :userId ) OR opponent_id  IN(Select team_id FROM users_teams WHERE users_teams.user_id = :userId ) OR host_owner = :userId OR opponent_owner = :userId;
+       ");
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return  $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 //SELECT * FROM v_games_teams WHERE  host_id = :teamId  AND host_owner = :userId OR opponent_id = :teamId  AND opponent_owner = :userId AND id != null

@@ -27,10 +27,10 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/invitation/teaminvitations.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/game/usergames.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
-  <script type="text/javascript" src="/public/js/teaminvitations.js" defer></script>
+  <script type="text/javascript" src="/public/js/usergames.js" defer></script>
 
 </head>
 
@@ -69,14 +69,14 @@
               >
             </li>
 
-            <li class="menu__button active">
+            <li class="menu__button">
               <a class="menu__link" href="/myteams">
                 <i class="fa-solid fa-users"></i>
                 Teams</a
               >
             </li>
-            <li class="menu__button">
-              <a class="menu__link" href="/usergames">
+            <li class="menu__button active">
+              <a class="menu__link" href="">
                 <i class="fa-solid fa-circle-play"></i>
                 Compet</a
               >
@@ -113,17 +113,25 @@
         </div>
         
         <div id="not-found" class="not-found">
-          <h3 class="not-found__header">There are no requests to join this team.</h3>
+          <h3 class="not-found__header">This team has no games.</h3>
           <picture class="not-found__picture">
             <img class="not-found__img" src="/public/img/not_found.png" alt="Not Found!">
           </picture>
         </div>
           
-        <section>
-          <ul id="invitations" class="invitations">
+        <div id="header" class="game-header hidden">
+             <h3 class="game-header__h3">
+                Competitions
+             </h3>           
+            <hr class="game-header__hr">
+        </div>
+
+        <section >
+          <ul id="games" class="games">
           </ul>
         </section>
 
+       
 
     </div>
   </main>

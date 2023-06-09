@@ -73,7 +73,7 @@
               >
             </li>
             <li class="menu__button">
-              <a class="menu__link" href="">
+              <a class="menu__link" href="/usergames">
                 <i class="fa-solid fa-circle-play"></i>
                 Compet</a
               >
@@ -109,7 +109,7 @@
               </a>
             </li>
             <li>
-              <a  class="teams__link teams__link--border" href="/">
+              <a  class="teams__link teams__link--border" href="/teammember">
               <i class="fa-solid fa-user teams__icon--nav"></i>
                 Member
               </a>
