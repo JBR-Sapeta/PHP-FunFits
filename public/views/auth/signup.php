@@ -8,6 +8,9 @@
 
 <!DOCTYPE html>
 <head>
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  
   <title>Sign Up</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

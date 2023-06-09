@@ -140,6 +140,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: var(--space-30);
 }
 
@@ -204,3 +205,26 @@
   color: var(--color-primary-dark);
 }
 
+/*  ------------------ MEDIA -------------------- */
+
+@media only screen and (max-width: 750px) {
+
+  .game{
+    flex-direction: column;
+  }
+
+  .game__info {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .game__header {
+    flex-direction: column;
+    margin-bottom: var(--space-20);
+  }
+
+  .game__actions{
+    margin-top: var(--space-40);
+  }
+}

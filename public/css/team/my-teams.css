@@ -27,7 +27,7 @@
   font-size: var(--font-size-16);
 }
 
-.teams__link:hover{
+.teams__link:hover {
   background-color: var(--color-secondary-dark);
 }
 
@@ -184,4 +184,24 @@
   transform: translateY(1px);
   background-color: var(--color-white);
   color: var(--color-red-dark);
+}
+
+/*  ------------------ MEDIA -------------------- */
+
+@media only screen and (max-width: 400px) {
+  .teams__ul {
+    flex-direction: column;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .teams__link {
+    width: 240px;
+  }
+  
+  .teams__link--border {
+    border-right: 0;
+    border-bottom: 1px var(--color-white) solid;
+  }
+  
 }

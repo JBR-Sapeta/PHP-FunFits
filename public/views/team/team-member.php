@@ -9,11 +9,15 @@
 
 <!DOCTYPE html>
 <head>
+
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  
   <script
     src="https://kit.fontawesome.com/46d253cbeb.js"
     crossorigin="anonymous"
   ></script>
-  <title>Sign Up</title>
+  <title>Member</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -103,13 +107,13 @@
         <nav class="teams__actions">
           <ul class="teams__ul">
             <li>
-              <a  class="teams__link teams__link--border teams__link--active" href="/myteams">
+              <a  class="teams__link teams__link--border " href="/myteams">
                 <i class="fa-solid fa-user-shield teams__icon--nav"></i>
                 Owner
               </a>
             </li>
             <li>
-              <a  class="teams__link teams__link--border" href="/teammember">
+              <a  class="teams__link teams__link--border teams__link--active" href="/teammember">
               <i class="fa-solid fa-user teams__icon--nav"></i>
                 Member
               </a>

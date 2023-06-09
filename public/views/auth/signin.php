@@ -9,6 +9,10 @@
 
 <!DOCTYPE html>
 <head>
+
+  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  
   <script
     src="https://kit.fontawesome.com/46d253cbeb.js"
     crossorigin="anonymous"
@@ -120,7 +124,7 @@
               </p>
             </div>
 
-            <div class="auth-form__actions ">
+            <div class="auth-form__actions">
               <button class="auth-form__button" type="submit">Sign In</button>
             </div>
           </form>

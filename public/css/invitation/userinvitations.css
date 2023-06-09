@@ -94,6 +94,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+
 }
 
 .invitation {
@@ -107,6 +108,7 @@
   /*background-color: var(--color-gray-100);*/
   border-radius: var(--radius-4);
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+  align-self: center;
 }
 
 .invitation__picture {
@@ -214,3 +216,27 @@
   background-color: transparent;
   color: var(--color-red-dark);
 }
+
+
+/*  ------------------ MEDIA -------------------- */
+
+
+
+@media only screen and (max-width: 750px) {
+  .invitation {
+    flex-direction: column;
+  }
+
+  .invitation__picture {
+
+    max-width: 480px;
+    width: 100%;
+    height: 240px;
+  }
+  .invitation__status{
+    flex-direction: row;
+  }
+
+  
+}
+
