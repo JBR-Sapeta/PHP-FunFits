@@ -61,9 +61,9 @@ class TeamController extends AppController{
             return $this->render("team/team", ['team' => null]);
         }
 
-        $int = (int)$id;
+        $teamId = (int)$id;
 
-        $team = $this->teamRepository->getTeam($int);
+        $team = $this->teamRepository->getTeam($teamId);
         return $this->render("team/team", ['team' => $team]);
     }
 
@@ -73,9 +73,9 @@ class TeamController extends AppController{
             return $this->render("team/menage-team", ['team' => null]);
         }
 
-        $int = (int)$id;
+        $teamId = (int)$id;
 
-        $team = $this->teamRepository->getTeam($int);
+        $team = $this->teamRepository->getTeam($teamId);
         return $this->render("team/menage-team", ['team' => $team]);
     }
 
@@ -104,6 +104,29 @@ class TeamController extends AppController{
         }
     }
     
+    public function challenge(string $id){
+
+        session_start();
+        $userId = $_SESSION['userId'];
+
+        if(!is_numeric($id) ){
+            return $this->render("team/team", ['team' => null]);
+        }
+
+        $teamId = (int)$id;
+        $opponent = $this->teamRepository->getTeam($teamId);
+
+        if($opponent){
+
+            $game = $opponent->getGame();
+            $teams = $this->teamRepository->getTeamsForChallenge($userId, $game);
+
+            return $this->render("team/challenge", ['opponent' => $opponent ,'teams' => $teams]);
+        }
+
+        return $this->render("team/team", ['team' => null]);
+    }
+    
     private function validate(array $file): bool{
 
         if ($file['size'] > self::MAX_FILE_SIZE) {
@@ -117,4 +140,6 @@ class TeamController extends AppController{
         }
         return true;
     }
+
+
 }

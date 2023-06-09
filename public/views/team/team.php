@@ -139,8 +139,8 @@
                     <button type="submit" class="team__button">Join</button>
                  </form>
 
-
-                  <a id="<?= $team->getId() ?>" class="team__button team__button--green">Compete</a>
+                 
+                  <a href="/challenge/<?= $team->getId() ?>" class="team__button team__button--green">Compete</a>
                 </div>
 
             </article>

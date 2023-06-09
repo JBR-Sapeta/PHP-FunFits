@@ -23,7 +23,7 @@ Routing::post('search','TeamController');
 Routing::get('team','TeamController');
 Routing::get('menageteam','TeamController');
 Routing::post('deleteteam','TeamController');
-
+Routing::get('challenge','TeamController');
 
 Routing::post('createinvitation','InvitationController');
 Routing::post('deleteinvitation','InvitationController');
@@ -33,5 +33,12 @@ Routing::get('userinvitations','InvitationController');
 Routing::get('getuserinvitations','InvitationController');
 Routing::get('teaminvitations','InvitationController');
 Routing::get('getteaminvitations','InvitationController');
+
+Routing::post('creategame','GameController');
+Routing::post('acceptgame','GameController');
+Routing::post('rejectgame','GameController');
+Routing::post('deletegame','GameController');
+Routing::get('getgames','GameController');
+Routing::get('menagegames','GameController');
 
 Routing::run($path);

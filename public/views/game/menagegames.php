@@ -27,10 +27,10 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/team/menage-team.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/game/menagegames.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
-
+  <script type="text/javascript" src="/public/js/menagegames.js" defer></script>
 
 </head>
 
@@ -58,6 +58,7 @@
             <li class="menu__button ">
               <a class="menu__link" href="/profile">
                 <i class="fa-solid fa-user"></i>
+
                 Profile
               </a>
             </li>
@@ -98,68 +99,32 @@
     </div>
 
     <div class="main__page">
-      <section class="team">
-       <?php if($team) : ?>
-          
-            <article class="team__item">
-                <div class="team__name">
-                  <h3><?= $team->getTitle() ?></h3>
-                </div>
 
-                <div class="team__info">
-                  <p class="team__data">
-                    <i class="fa-solid fa-basketball team__icon"></i>  
-                    <?= $team->getGame() ?>
-                  </p>
-                  <p class="team__data">
-                    <i class="fa-sharp fa-solid fa-city team__icon"></i>
-                    <?= $team->getCity() ?>
-                  </p>
-                  <p class="team__data"> 
-                    <i class="fa-solid fa-users team__icon"></i>
-                    <?= $team->getMembers() ?>
-                  </p>
-                </div>
-
-                <picture class="team__picture"> 
-                  <img class="team__img" src="/public/uploads/<?= $team->getImage() ?>" alt="Team">
-                </picture>
-                
-                <div class="team__description">
-                  <p class="team__about">
-                  <i class="fa-solid fa-circle-info team__icon"></i>
-                    About us:
-                  </p>
-                  <p class="team__text">
-                  <?= $team->getDescription() ?>
-                  </p>
-                </div>
-
-                <div class="team__actions">
-                    <a href="/teaminvitations/<?= $team->getId() ?>" class="team__button">Members</a>
-                    <a href="/menagegames/<?= $team->getId() ?>" class="team__button team__button--green ">Games</a>
-                  <form method="POST" action ="/deleteteam/<?= $team->getId() ?>">
-                    <button type="submit" class="team__button team__button--red">Delete</button>
-                  </form>
-                </div>
-
-            </article>
     
 
-        <?php else : ?>
-            <div class="not-found">
-              <h3 class="not-found__header">Team with given ID does not exist.</h3>
-              <div class="not-found__mmesage ">
-                <picture class="not-found__picture">
-                    <img class="not-found__img" src="/public/img/not_found.png" alt="Good bye!">
-                </picture>
-              </div>
-             <a class="not-found__link" href="/searchteams"> Search</a>
+      
+        <div id="spinner" class="spinner">
+          <picture class="spinner__picture">
+            <img class="spinner__img" src="/public/img/loading.png" alt="Good bye!">
+            <div class="spinner__circle">
+              <div class="spinner__arrow border-gradient-purple "></div>
             </div>
-        <?php endif; ?>
-      </section>
+          </picture>
+        </div>
+        
+        <div id="not-found" class="not-found">
+          <h3 class="not-found__header">This team has no games.</h3>
+          <picture class="not-found__picture">
+            <img class="not-found__img" src="/public/img/not_found.png" alt="Not Found!">
+          </picture>
+        </div>
+          
+        <section id="<?= $_SESSION['userId'] ; ?>">
+          <ul id="games" class="games">
+          </ul>
+        </section>
 
-
+       
 
     </div>
   </main>

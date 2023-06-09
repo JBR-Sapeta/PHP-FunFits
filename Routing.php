@@ -4,6 +4,7 @@ require_once 'src/controllers/DefaultController.php';
 require_once 'src/controllers/AuthController.php';
 require_once 'src/controllers/TeamController.php';
 require_once 'src/controllers/InvitationController.php';
+require_once 'src/controllers/GameController.php';
 
 class Routing {
     public static $routes;

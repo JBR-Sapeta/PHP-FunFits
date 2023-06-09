@@ -27,10 +27,9 @@
   <link rel="stylesheet" type="text/css" href="/public/css/layout/main.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/sidebar.css" />
   <link rel="stylesheet" type="text/css" href="/public/css/layout/footer.css" />
-  <link rel="stylesheet" type="text/css" href="/public/css/team/menage-team.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/team/chellenge.css" />
   <script src="https://kit.fontawesome.com/46d253cbeb.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="/public/js/ui-sidebar.js" defer></script>
-
 
 </head>
 
@@ -99,30 +98,30 @@
 
     <div class="main__page">
       <section class="team">
-       <?php if($team) : ?>
-          
+
+        <?php if($opponent) : ?>
             <article class="team__item">
                 <div class="team__name">
-                  <h3><?= $team->getTitle() ?></h3>
+                  <h3><?= $opponent->getTitle() ?></h3>
                 </div>
 
                 <div class="team__info">
                   <p class="team__data">
                     <i class="fa-solid fa-basketball team__icon"></i>  
-                    <?= $team->getGame() ?>
+                    <?= $opponent->getGame() ?>
                   </p>
                   <p class="team__data">
                     <i class="fa-sharp fa-solid fa-city team__icon"></i>
-                    <?= $team->getCity() ?>
+                    <?= $opponent->getCity() ?>
                   </p>
                   <p class="team__data"> 
                     <i class="fa-solid fa-users team__icon"></i>
-                    <?= $team->getMembers() ?>
+                    <?= $opponent->getMembers() ?>
                   </p>
                 </div>
 
                 <picture class="team__picture"> 
-                  <img class="team__img" src="/public/uploads/<?= $team->getImage() ?>" alt="Team">
+                  <img class="team__img" src="/public/uploads/<?= $opponent->getImage() ?>" alt="Team">
                 </picture>
                 
                 <div class="team__description">
@@ -131,36 +130,71 @@
                     About us:
                   </p>
                   <p class="team__text">
-                  <?= $team->getDescription() ?>
+                  <?= $opponent->getDescription() ?>
                   </p>
                 </div>
 
-                <div class="team__actions">
-                    <a href="/teaminvitations/<?= $team->getId() ?>" class="team__button">Members</a>
-                    <a href="/menagegames/<?= $team->getId() ?>" class="team__button team__button--green ">Games</a>
-                  <form method="POST" action ="/deleteteam/<?= $team->getId() ?>">
-                    <button type="submit" class="team__button team__button--red">Delete</button>
-                  </form>
-                </div>
+                <hr class="team__hr"/>
+
+                <?php if($teams) : ?>
+                <form class="team__form" method="POST" action="/creategame">
+                 
+                    <input
+                        name="opponentId"
+                        type="hidden"
+                        value="<?= $opponent->getId() ?>"
+                    />
+
+                    <div class="input__container">
+                        <label for="game">
+                        <i class="fa-sharp fa-solid fa-city input__icon"></i>
+                            Enter a place:
+                        </label>
+                        <input
+                            name="place"
+                            class="input__field"
+                            type="text"
+                            placeholder="Place"
+                            require
+                        />
+                    </div>
+
+                    <div class="input__container">
+                        <label for="team">
+                        <i class="fa-solid fa-users input__icon"></i>
+                        Choose a team:
+                        </label>
+                        <select name="hostId" id="team" class="input__select" require>
+                           
+                                <?php foreach($teams as $team):?>
+                                <option value="<?= $team->getId() ?>"><?= $team->getTitle() ?></option>
+                                <?php endforeach; ?>
+                            
+                        </select> 
+                    </div>
+
+                    <div class="input__container">
+                        <label for="date">
+                        <i class="fa-solid fa-calendar-days input__icon"></i>
+                        Choose a date:
+                        </label>
+                        <input id="gdate" name="game_date" class="input__field"  type="datetime-local" require>
+                    </div>
+
+                    <div class="form__button">
+                        <button type="submit" class="team__button team__button--green">Compete</button>
+                    </div>
+                </form>
+
+                <?php else : ?>                     
+                        <div class="message">
+                            <h3 class="message__header">You don't have any team that plays <?= strtolower($opponent->getGame()) ?>. </h3>
+                        </div>
+                <?php endif; ?>
 
             </article>
-    
-
-        <?php else : ?>
-            <div class="not-found">
-              <h3 class="not-found__header">Team with given ID does not exist.</h3>
-              <div class="not-found__mmesage ">
-                <picture class="not-found__picture">
-                    <img class="not-found__img" src="/public/img/not_found.png" alt="Good bye!">
-                </picture>
-              </div>
-             <a class="not-found__link" href="/searchteams"> Search</a>
-            </div>
-        <?php endif; ?>
+        <?php endif; ?>        
       </section>
-
-
-
     </div>
   </main>
 

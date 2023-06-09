@@ -86,43 +86,10 @@
   object-fit: cover;
 }
 
-/* ----------------------   Invitations   ----------------- */
+/* ----------------------   Games   ----------------- */
 
-.invitations {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.invitation {
-  max-width: 1080px;
-  width: 100%;
-  min-height: 160px;
-  padding: var(--space-20);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /*background-color: var(--color-gray-100);*/
-  border-radius: var(--radius-4);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
-}
-
-.invitation__picture {
-  align-self: center;
-  display: block;
-  width: 240px;
-  height: 184px;
-}
-
-.invitation__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.invitation__data {
-  padding: var(--space-30);
+.games {
+ max-width: 1080px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -130,71 +97,83 @@
   gap: var(--space-30);
 }
 
-.invitation__title {
-  font-size: var(--font-size-18);
-}
-
-.invitation__title > h3 {
-  margin: 0;
-}
-
-.invitation__info {
+.game {
+  width: 100%;
+  min-height: 160px;
+  padding: var(--space-20);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: var(--space-20);
+  justify-content: space-between;
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-4);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
 }
 
-.invitation__info > p {
-  margin: 0;
-  font-size: var(--font-size-14);
-}
-
-.invitation__icon {
-  margin-right: var(--space-5);
-  font-size: var(--font-size-14);
-  color: var(--color-primary-dark);
-}
-
-.invitation__span {
-  font-weight: 500;
-}
-
-.invitation__status {
-  margin: var(--space-20);
+.game__data {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: var(--space-20);
 }
 
-.invitation__status--red {
-  color: var(--color-red-dark);
+.game__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-10);
 }
 
-.invitation__status--green {
+.game__header > h3 {
+  margin: 0;
+  font-size: var(--font-size-24);
+}
+
+.game__header > span {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-24);
   color: var(--color-primary-dark);
 }
-.invitation__status--blue {
-  color: var(--color-secondary-dark);
+
+.game__informations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-30);
 }
 
-.invitation__status > p {
-  margin: 0;
-  font-weight: 500;
-  font-size: var(--font-size-14);
-}
-.invitation__status > span {
+.game__info {
+  color: var(--color-gray-300);
   font-size: var(--font-size-16);
-  font-weight: var(--font-weight-500);
+  font-weight: var(--font-weight-bold);
 }
 
-.invitation__action {
-  margin: var(--space-30);
+.game__info > span {
+  color: var(--color-black);
+  font-weight: var(--font-weight-regular);
 }
 
-.invitation__button {
+.game__icon {
+  margin-right: var(--space-10);
+  font-size: var(--font-size-16);
+  color: var(--color-gray-200);
+}
+
+.game__info > p {
+  font-size: var(--font-size-16);
+}
+
+.game__actions {
+    margin: var(--space-20) var(--space-20) var(--space-20) var(--space-40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-20);
+}
+
+.game__button {
   min-width: 95px;
   padding: var(--space-5) var(--space-20);
   border: 2px solid var(--color-secondary-dark);
@@ -205,22 +184,23 @@
   cursor: pointer;
 }
 
-.invitation__button:hover {
+.game__button:hover {
   transform: scale(1.04);
 }
 
-.invitation__button:active {
+.game__button:active {
   transform: translateY(1px);
   background-color: transparent;
   color: var(--color-secondary-dark);
 }
 
-.invitation__button--green {
+.game__button--green {
   border: 2px solid var(--color-primary-dark);
   background-color: var(--color-primary-dark);
 }
 
-.invitation__button--green:active {
+.game__button--green:active {
   background-color: transparent;
   color: var(--color-primary-dark);
 }
+
