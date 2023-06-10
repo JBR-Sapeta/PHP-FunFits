@@ -15,19 +15,27 @@ It utilizes:
 
 FunFits aims to facilitate the formation of sport teams, foster friendly competition, and create a thriving community of sports enthusiasts. Whether users are looking to create their own team, join an existing one, or challenge other teams to thrilling matches, this application provides a comprehensive platform to meet their needs.
 
+
 ## Screenshots
 
+
+
 ### Home Page
-![Home Page](./readme_images/screan_1.PNG)
+![Home Page](./readme_images/screan_1A.PNG)
+
 
 ### Sign Up Page
-![Sign UP Page](./readme_images/screan_2.PNG)
+![Sign UP Page](./readme_images/screan_2A.PNG)
+
 
 ### Search Page
-![Search Page](./readme_images/screan_3.PNG)
+![Search Page](./readme_images/screan_3A.PNG)
+
 
 ### Teams Board
-![Teams Board](./readme_images/screan_4.PNG)
+![Teams Board](./readme_images/screan_4A.PNG)
+
+
 
 
 
@@ -41,24 +49,28 @@ FunFits aims to facilitate the formation of sport teams, foster friendly competi
 - Game history: Each user has a personal page that displays their game history.
 
 
+
+
 ## Installation
+
 
 To run this project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/web-app-project.git`
-2. Change to the project directory: `cd web-app-project`
+1. Clone the repository: `git clone https://github.com/JBR-Sapeta/PHP-WdPAI.git`
+2. Change to the project directory.
 3. Create config.php file in root directory.
 4. In config.php add following fields and enter data for your dtabase.
-- const USERNAME = 'postgres';
-- const PASSWORD = 'somepassword';
-- const HOST = 'database-host';
-- const DATABASE = 'database-name';
-- const PORT = 'database-port';
+    - const USERNAME = 'postgres';
+    - const PASSWORD = 'somepassword';
+    - const HOST = 'database-host';
+    - const DATABASE = 'database-name';
+    - const PORT = 'database-port';
 5. In root directory you can find databse dump - db.dump.sql.
 6. Restore database. 
 3. Install Docker: Ensure that Docker is installed on your local machine. 
 3. Run docker-compose build.
 5. Start the local development server: docker-compose up.
+
 
 ## Usage
 
