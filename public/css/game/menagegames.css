@@ -1,0 +1,230 @@
+/* ----------------------   Spinner   ----------------- */
+
+.spinner {
+  display: block;
+}
+
+.spinner--hiden {
+  display: none;
+}
+
+.spinner__picture {
+  position: relative;
+  display: block;
+  max-width: 456px;
+  max-height: 456px;
+}
+
+.spinner__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.spinner__circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 140px;
+  width: 100%;
+  max-height: 140px;
+  height: 100%;
+  background-color: transparent;
+}
+
+.spinner__arrow {
+  max-width: 140px;
+  width: 100%;
+  max-height: 140px;
+  height: 100%;
+  animation: spinner ease-in-out 1s infinite;
+  border-top: 4px rgba(255, 255, 255, 0.9) solid;
+  border-right: 4px rgba(255, 255, 255, 0) solid;
+  border-bottom: 4px rgba(255, 255, 255, 0.9) solid;
+  border-left: 4px rgba(255, 255, 255, 0) solid;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(361deg);
+  }
+}
+
+/* ----------------------   Not Found   ----------------- */
+
+.not-found {
+  display: none;
+}
+
+.not-found__header {
+  margin: 0 0 var(--space-40) 0;
+  text-align: center;
+  font-size: var(--font-size-24);
+}
+
+.not-found--show {
+  margin-top: var(--space-100);
+  display: block;
+}
+
+.not-found__picture {
+  display: block;
+  max-width: 456px;
+  max-height: 456px;
+}
+
+.not-found__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ----------------------   Games   ----------------- */
+
+.games {
+ max-width: 1080px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-30);
+}
+
+.game {
+  width: 100%;
+  min-height: 160px;
+  padding: var(--space-20);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-4);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.game__data {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-20);
+}
+
+.game__header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-10);
+}
+
+.game__header > h3 {
+  margin: 0;
+  font-size: var(--font-size-24);
+}
+
+.game__header > span {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-24);
+  color: var(--color-primary-dark);
+}
+
+.game__informations {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-30);
+}
+
+.game__info {
+  color: var(--color-gray-300);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+}
+
+.game__info > span {
+  color: var(--color-black);
+  font-weight: var(--font-weight-regular);
+}
+
+.game__icon {
+  margin-right: var(--space-10);
+  font-size: var(--font-size-16);
+  color: var(--color-gray-200);
+}
+
+.game__info > p {
+  font-size: var(--font-size-16);
+}
+
+.game__actions {
+    margin: var(--space-20) var(--space-20) var(--space-20) var(--space-40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-20);
+}
+
+.game__button {
+  min-width: 95px;
+  padding: var(--space-5) var(--space-20);
+  border: 2px solid var(--color-secondary-dark);
+  background-color: var(--color-secondary-dark);
+  color: var(--color-white);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+}
+
+.game__button:hover {
+  transform: scale(1.04);
+}
+
+.game__button:active {
+  transform: translateY(1px);
+  background-color: transparent;
+  color: var(--color-secondary-dark);
+}
+
+.game__button--green {
+  border: 2px solid var(--color-primary-dark);
+  background-color: var(--color-primary-dark);
+}
+
+.game__button--green:active {
+  background-color: transparent;
+  color: var(--color-primary-dark);
+}
+
+/*  ------------------ MEDIA -------------------- */
+
+@media only screen and (max-width: 750px) {
+
+  .game{
+    flex-direction: column;
+  }
+
+  .game__info {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .game__header {
+    flex-direction: column;
+    margin-bottom: var(--space-20);
+  }
+
+  .game__actions{
+    margin-top: var(--space-40);
+  }
+}

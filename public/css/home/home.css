@@ -12,8 +12,23 @@
   font-size: var(--font-size-48);
 }
 
-.hero__span {
+#actions {
+  display: inline-block;
+  text-align: center;
+  width: 110px;
+
+}
+
+.hero__span--blue {
+  color: var(--color-secondary-dark);
+}
+
+.hero__span--green {
   color: var(--color-primary-dark);
+}
+
+.hero__span--red {
+  color: var(--color-red-dark);
 }
 
 .hero__picture {
@@ -211,6 +226,7 @@
     var(--color-primary-light) 0%,
     var(--color-secondary-light) 68.23%
   );
+  cursor: pointer;
 }
 
 .feature__picture--left {
@@ -221,6 +237,10 @@
 .feature__picture--right {
   right: 0;
   box-shadow: rgba(0, 0, 0, 0.15) 3px 4px 2.6px;
+}
+
+.feature__img:hover {
+  transform: scale(0.98);
 }
 
 .feature__img {
@@ -324,7 +344,6 @@
     font-size: var(--font-size-32);
     font-weight: var(--font-weight-bold);
   }
-
 }
 
 .numbers {
@@ -356,7 +375,7 @@
 }
 
 .numbers__icon {
-font-size: var(--font-size-32);
+  font-size: var(--font-size-32);
   color: var(--color-primary-dark);
 }
 
@@ -372,8 +391,6 @@ font-size: var(--font-size-32);
 }
 
 @media only screen and (max-width: 724px) {
- 
-
   .numbers__header {
     font-size: var(--font-size-36);
   }
@@ -386,14 +403,15 @@ font-size: var(--font-size-32);
 
   .numbers__icon {
     font-size: var(--font-size-24);
-      color: var(--color-primary-dark);
-    }
+    color: var(--color-primary-dark);
+  }
 
   .numbers__count {
     font-size: var(--font-size-20);
   }
-  
+
   .numbers__title {
     font-size: var(--font-size-18);
   }
 }
+

@@ -1,0 +1,4 @@
+public/uploads
+.vscode
+config.php
+db.sql
