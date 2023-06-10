@@ -15,6 +15,7 @@ class GameController extends AppController{
     }
 
     public function creategame(){
+        $url = "http://$_SERVER[HTTP_HOST]";
        
         if (!$this->isPost()) {
             header("Location: {$url}/searchteams");
@@ -29,10 +30,13 @@ class GameController extends AppController{
   
 
         $teams = $this->gameRepository->createGame($userId, $game);
+
+        header("Location: {$url}/myteams");
        
     }
 
     public function acceptgame($id){
+        $url = "http://$_SERVER[HTTP_HOST]";
         session_start();
         $userId = $_SESSION['userId'];
 
@@ -47,6 +51,7 @@ class GameController extends AppController{
     }
     
     public function rejectgame($id){
+        $url = "http://$_SERVER[HTTP_HOST]";
         session_start();
         $userId = $_SESSION['userId'];
 
@@ -61,6 +66,8 @@ class GameController extends AppController{
     }
 
     public function deletegame($id){
+        $url = "http://$_SERVER[HTTP_HOST]";
+
         session_start();
         $userId = $_SESSION['userId'];
 
