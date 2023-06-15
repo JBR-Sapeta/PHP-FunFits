@@ -14,32 +14,32 @@ class InvitationRepository extends Repository{
         $stmt->execute();
     }
 
-    public function deleteInvitation(int $id, int $userId): void{
+    public function deleteInvitation(int $invId, int $userId): void{
 
         $stmt = $this->database->connect()->prepare('
-            CALL deleteinvitation( :id , :userId )
+            CALL deleteinvitation( :invId , :userId )
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':invId', $invId, PDO::PARAM_INT);
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
     }
 
-    public function acceptInvitation(int $id, int $userId): void{
+    public function acceptInvitation(int $invId, int $userId): void{
 
         $stmt = $this->database->connect()->prepare('
-            CALL acceptinvitation( :id , :userId )
+            CALL acceptinvitation( :invId , :userId )
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':invId', $invId, PDO::PARAM_INT);
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
     }
 
-    public function rejectInvitation(int $id, int $userId):void{
+    public function rejectInvitation(int $invId, int $userId):void{
 
         $stmt = $this->database->connect()->prepare('
-            CALL rejectinvitation( :id , :userId )
+            CALL rejectinvitation( :invId , :userId )
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':invId', $invId, PDO::PARAM_INT);
         $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
     }
