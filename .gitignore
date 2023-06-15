@@ -1,4 +1,5 @@
 public/uploads
 .vscode
+.idea
 config.php
 db.sql

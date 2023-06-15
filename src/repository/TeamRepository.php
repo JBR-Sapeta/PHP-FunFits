@@ -25,7 +25,7 @@ class TeamRepository extends Repository{
     public function deleteTeam( int $teamId, int $userId){
 
         $stmt = $this->database->connect()->prepare('
-            SELECT   delete_team( :teamid , :userid )
+            CALL   deleteteam( :teamid , :userid )
         ');
         $stmt->bindParam(':teamid', $teamId, PDO::PARAM_INT);
         $stmt->bindParam(':userid', $userId, PDO::PARAM_INT);
@@ -35,18 +35,17 @@ class TeamRepository extends Repository{
 
 
 
-    public function getTeam (int $id): ?Team{
+    public function getTeam (int $teamId): ?Team{
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM teams WHERE id = :id
+            SELECT * FROM teams WHERE id = :teamId
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':teamId', $teamId, PDO::PARAM_INT);
         $stmt->execute();
 
         $team = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($team == false) {
-            //Add Exception
             return null;
         }
 
@@ -88,14 +87,14 @@ class TeamRepository extends Repository{
         return $result;
     }
 
-    public function getTeamsForOwner(int  $id): array
+    public function getTeamsForOwner(int  $userId): array
     {
         $result = [];
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM teams WHERE owner_id = :id
+            SELECT * FROM teams WHERE owner_id = :userId
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
         $stmt->execute();
         $teams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 

@@ -7,6 +7,6 @@ class  Repository{
     protected $database;
 
     public function __construct(){
-        $this->database = Database::getInstance(); //We  use the Database singleton instance
+        $this->database = Database::getInstance(); 
     }
 }

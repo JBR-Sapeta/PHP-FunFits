@@ -33,18 +33,17 @@ class UserRepository extends Repository{
        
     }
 
-    public function getUserById (int $id): ?User{
+    public function getUserById (int $userId): ?User{
 
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM users WHERE id = :id
+            SELECT * FROM users WHERE id = :userId
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->bindParam(':userId', $userId, PDO::PARAM_STR);
         $stmt->execute();
 
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user == false) {
-            //Add Exception
             return null;
         }
 
@@ -73,7 +72,6 @@ class UserRepository extends Repository{
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user == false) {
-            //Add Exception
             return null;
         }
 
