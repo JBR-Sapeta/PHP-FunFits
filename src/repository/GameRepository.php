@@ -74,5 +74,5 @@ class GameRepository extends Repository{
     }
 }
 
-//SELECT * FROM v_games_teams WHERE  host_id = :teamId  AND host_owner = :userId OR opponent_id = :teamId  AND opponent_owner = :userId AND id != null
+
 

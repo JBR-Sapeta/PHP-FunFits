@@ -3,6 +3,7 @@
 require_once 'config.php';
 
 class Database{
+    private static $instance;
     private $usernmae;
     private $password;
     private $host;
@@ -16,6 +17,14 @@ class Database{
         $this->host = HOST;
         $this->port = PORT;
         $this->database = DATABASE;
+    }
+
+    public static function getInstance()
+    {
+        if (!self::$instance) {
+            self::$instance = new Database();
+        }
+        return self::$instance;
     }
 
     public function connect()
