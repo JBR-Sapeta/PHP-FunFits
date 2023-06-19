@@ -12,7 +12,8 @@ It utilizes:
 - SQL
 - PostgreSQL
 - Docker
-
+- MVC Architecture
+- Design Patterns
 
 
 FunFits aims to facilitate the formation of sport teams, foster friendly competition, and create a thriving community of sports enthusiasts. Whether users are looking to create their own team, join an existing one, or challenge other teams to thrilling matches, this application provides a comprehensive platform to meet their needs.
@@ -54,10 +55,23 @@ The project utilizes a PostgreSQL database. The repository contains two files:
 - database.sql - contains the necessary SQL code to create the database.
 
 **ERD Diagram**
-![ERD Diagram](./readme_images/ERD.PNG)
+![ERD Diagram](./readme_images/ERD.png)
 
 
+##  UML
+![UML](./readme_images/UML.png)
 
+**Models**
+![UML](./readme_images/Models.png)
+
+**Controllers**
+![UML](./readme_images/Controllers.png)
+
+**Repositories**
+![UML](./readme_images/Repository.png)
+
+**Database and Routing**
+![UML](./readme_images/other.png)
 
 ## Installation
 
