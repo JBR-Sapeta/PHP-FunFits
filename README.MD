@@ -15,6 +15,12 @@ It utilizes:
 
 FunFits aims to facilitate the formation of sport teams, foster friendly competition, and create a thriving community of sports enthusiasts. Whether users are looking to create their own team, join an existing one, or challenge other teams to thrilling matches, this application provides a comprehensive platform to meet their needs.
 
+###  Prototype in Figma
+The frontend prototype was developed using Figma. 
+
+![Components](./readme_images/figma.PNG)
+
+
 
 ## Screenshots
 
