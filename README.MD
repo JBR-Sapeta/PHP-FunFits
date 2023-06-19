@@ -9,41 +9,13 @@ It utilizes:
 - JavaScript
 - HTML
 - CSS
+- SQL
+- PostgreSQL
 - Docker
 
 
 
 FunFits aims to facilitate the formation of sport teams, foster friendly competition, and create a thriving community of sports enthusiasts. Whether users are looking to create their own team, join an existing one, or challenge other teams to thrilling matches, this application provides a comprehensive platform to meet their needs.
-
-###  Prototype in Figma
-The frontend prototype was developed using Figma. 
-
-![Components](./readme_images/figma.PNG)
-
-
-
-## Screenshots
-
-
-
-### Home Page
-![Home Page](./readme_images/screan_1A.PNG)
-
-
-### Sign Up Page
-![Sign UP Page](./readme_images/screan_2A.PNG)
-
-
-### Search Page
-![Search Page](./readme_images/screan_3A.PNG)
-
-
-### Teams Board
-![Teams Board](./readme_images/screan_4A.PNG)
-
-
-
-
 
 ## Features
 
@@ -55,10 +27,39 @@ The frontend prototype was developed using Figma.
 - Game history: Each user has a personal page that displays their game history.
 
 
+###  Prototype in Figma
+The frontend prototype was developed using Figma. 
+
+![Components](./readme_images/figma.PNG)
+
+
+###  Application Views
+
+**Home Page**
+![Home Page](./readme_images/screan_1A.PNG)
+
+**Sign Up Page**
+![Sign UP Page](./readme_images/screan_2A.PNG)
+
+**Search Page**
+![Search Page](./readme_images/screan_3A.PNG)
+
+**Teams Board**
+![Teams Board](./readme_images/screan_4A.PNG)
+
+
+##  Database
+The project utilizes a PostgreSQL database. The repository contains two files:
+- db.dump.sql - contains a database dump.
+- database.sql - contains the necessary SQL code to create the database.
+
+**ERD Diagram**
+![ERD Diagram](./readme_images/ERD.PNG)
+
+
 
 
 ## Installation
-
 
 To run this project locally, follow these steps:
 
@@ -73,10 +74,19 @@ To run this project locally, follow these steps:
     - const PORT = 'database-port';
 5. In root directory you can find databse dump - db.dump.sql.
 6. Restore database. 
-3. Install Docker: Ensure that Docker is installed on your local machine. 
-3. Run docker-compose build.
-5. Start the local development server: docker-compose up.
-
+3. Ensure that Docker is installed on your local machine. 
+4. Build docker image.
+```
+docker-compose build
+```
+6. Start the local development server: 
+```
+docker-compose up.
+```
+6. Turn off the local development server: 
+```
+docker-compose stop
+```
 
 ## Usage
 
