@@ -5,7 +5,7 @@ This is a web application project built with PHP, that empowers users to create 
 
 
 It utilizes:  
-- PHP 7.4.1
+- PHP 
 - JavaScript
 - HTML
 - CSS
