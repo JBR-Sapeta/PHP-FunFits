@@ -95,7 +95,7 @@ docker-compose build
 ```
 6. Start the local development server: 
 ```
-docker-compose up.
+docker-compose up
 ```
 6. Turn off the local development server: 
 ```
